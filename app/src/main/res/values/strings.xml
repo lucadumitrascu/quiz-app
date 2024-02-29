@@ -11,4 +11,8 @@
     <string name="it_seems_that_your_name_is_missing_what_is_your_name">It seems that your name is missing, what is your name?</string>
     <string name="set_name">Set name</string>
     <string name="my_name_is">My name is...</string>
+    <string name="loading_name">Loading name...</string>
+    <string name="generate_quiz">Generate quiz</string>
+    <string name="change_name">Change name</string>
+    <string name="leaderboard">Leaderboard</string>
 </resources>

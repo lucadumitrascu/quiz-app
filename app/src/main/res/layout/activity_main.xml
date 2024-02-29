@@ -5,21 +5,64 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/gradient_background"
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/display_name"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginBottom="10sp"
+        android:fontFamily="sans-serif-black"
+        android:gravity="start"
+        android:text="@string/loading_name"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
+
+        android:layout_width="300sp"
+        android:textSize="30sp"
+        android:layout_margin="6sp"
+        android:background="@drawable/main_button"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"
+        android:text="@string/generate_quiz" />
+
+    <androidx.appcompat.widget.AppCompatButton
+
+        android:layout_width="300sp"
+        android:textSize="30sp"
+        android:layout_margin="6sp"
+        android:background="@drawable/main_button"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"
+        android:text="@string/leaderboard" />
+
+    <androidx.appcompat.widget.AppCompatButton
+
+        android:layout_width="300sp"
+        android:textSize="30sp"
+        android:layout_margin="6sp"
+        android:background="@drawable/main_button"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"
+        android:text="@string/change_name" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/logout"
-        android:layout_width="wrap_content"
+        android:layout_width="300sp"
+        android:textSize="30sp"
+        android:layout_margin="6sp"
+        android:background="@drawable/main_button"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
         android:layout_height="wrap_content"
         android:text="@string/logout_text" />
-
 </LinearLayout>

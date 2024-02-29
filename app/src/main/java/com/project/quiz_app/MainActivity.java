@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,7 +25,8 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
-    Button button;
+    TextView displayName;
+    Button logoutButton;
     FirebaseUser user;
 
     @Override
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         auth = FirebaseAuth.getInstance();
-        button = findViewById(R.id.logout);
+        logoutButton = findViewById(R.id.logout);
         user = auth.getCurrentUser();
 
         if (user == null) {
@@ -55,6 +57,12 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(intent);
                             finish();
                         }
+                        else {
+                            displayName = findViewById(R.id.display_name);
+                            String name = "Hello, ";
+                            name += userFromDB.getName();
+                            displayName.setText(name);
+                        }
                     }
                 }
 
@@ -65,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        button.setOnClickListener(v -> {
+        logoutButton.setOnClickListener(v -> {
             FirebaseAuth.getInstance().signOut();
             Intent intent = new Intent(getApplicationContext(), Login.class);
             startActivity(intent);
