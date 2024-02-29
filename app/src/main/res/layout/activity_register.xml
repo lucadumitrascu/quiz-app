@@ -4,47 +4,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".Register">
+    tools:context=".Login">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10sp"
+        android:fontFamily="sans-serif-black"
         android:gravity="center"
-        android:text="@string/register"
-        android:textSize="30sp" />
+        android:text="@string/create_acc"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="350sp"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/text_input_layout_stroke_color"
+        app:hintTextColor="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/email" />
+            android:hint="@string/email"
+            android:textColor="@color/input_text" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="350sp"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/white"
+        app:boxCornerRadiusBottomEnd="8dp"
+        app:boxCornerRadiusBottomStart="8dp"
+        app:boxCornerRadiusTopEnd="8dp"
+        app:boxCornerRadiusTopStart="8dp"
+        app:boxStrokeColor="@color/text_input_layout_stroke_color"
+        app:endIconMode="password_toggle"
+        app:hintTextColor="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/password" />
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:textColor="@color/input_text" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/register_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/register" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -52,11 +66,37 @@
         android:layout_height="wrap_content"
         android:visibility="gone" />
 
-    <TextView
-        android:id="@+id/loginInRegister"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
-        android:gravity="center"
-        android:text="@string/click_to_login" />
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/register_button"
+            android:layout_width="wrap_content"
+            android:layout_height="48sp"
+            android:layout_marginTop="10sp"
+            android:background="@drawable/button_login_register"
+            android:backgroundTint="@color/aqua"
+            android:text="@string/register"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/login_in_register"
+            android:layout_width="wrap_content"
+            android:layout_height="48sp"
+            android:layout_marginStart="6sp"
+            android:layout_marginTop="10sp"
+            android:background="@drawable/button_login_register"
+            android:backgroundTint="@color/aqua"
+            android:padding="10dp"
+            android:text="@string/back_to_login"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+
 </LinearLayout>
