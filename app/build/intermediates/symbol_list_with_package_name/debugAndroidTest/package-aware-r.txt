@@ -1,0 +1,3 @@
+com.project.quiz_app.test
+style WhiteBackgroundDialogTheme
+style WhiteBackgroundTheme

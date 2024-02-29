@@ -1,0 +1,6 @@
+com.project.quiz_app.test.app-annotation-experimental-1.3.0-0 C:\Users\dumit\.gradle\caches\transforms-3\075bf41ce814d4260f02e042700ce999\transformed\annotation-experimental-1.3.0\res
+com.project.quiz_app.test.app-core-1.5.0-1 C:\Users\dumit\.gradle\caches\transforms-3\30568b380fcbd6c472dec8793871322c\transformed\core-1.5.0\res
+com.project.quiz_app.test.app-androidTest-2 C:\Users\dumit\Desktop\quiz-app\app\build\generated\res\resValues\androidTest\debug
+com.project.quiz_app.test.app-mergeDebugAndroidTestResources-3 C:\Users\dumit\Desktop\quiz-app\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.project.quiz_app.test.app-mergeDebugAndroidTestResources-4 C:\Users\dumit\Desktop\quiz-app\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.project.quiz_app.test.app-merged_res-5 C:\Users\dumit\Desktop\quiz-app\app\build\intermediates\merged_res\debugAndroidTest
