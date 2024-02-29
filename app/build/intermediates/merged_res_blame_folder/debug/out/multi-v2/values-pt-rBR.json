@@ -4,24 +4,7 @@
             "outputFile": "com.project.quiz_app-mergeDebugResources-34:/values-pt-rBR/values-pt-rBR.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\dumit\\.gradle\\caches\\transforms-3\\557494114d0bbabc3cffaccbe3a0faba\\transformed\\play-services-basement-18.1.0\\res\\values-pt-rBR\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "199",
-                        "endColumns": "140",
-                        "endOffsets": "339"
-                    },
-                    "to": {
-                        "startLines": "49",
-                        "startColumns": "4",
-                        "startOffsets": "4802",
-                        "endColumns": "144",
-                        "endOffsets": "4942"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\dumit\\.gradle\\caches\\transforms-3\\ebca4dd04494c97b6f35f379e7b439b8\\transformed\\play-services-base-18.0.1\\res\\values-pt-rBR\\values.xml",
+                    "source": "C:\\Users\\dumit\\.gradle\\caches\\transforms-3\\edbe3992402d27772fd85d40fc94140d\\transformed\\play-services-base-18.1.0\\res\\values-pt-rBR\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -88,6 +71,23 @@
                         "endLines": "5,33,34,35,36,37,38,39,40,60,61,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122",
                         "endColumns": "12,80,77,83,94,88,100,119,80,63,91,78,59,89,63,70,62,74,63,53,126,57,61,53,78,140,86,81,138,82,83,138,86,79,55,50,65,73,79,86,82,72,76,68,73,101,87,76,92,95,73,79,96,51,83,65,86,87,61,63,62,67,111,110,106,109,59,54,76",
                         "endOffsets": "318,3137,3215,3299,3394,3483,3584,3704,3785,6226,6318,6714,6774,6864,6928,6999,7062,7137,7201,7255,7382,7440,7502,7556,7635,7776,7863,7945,8084,8167,8251,8390,8477,8557,8613,8664,8730,8804,8884,8971,9054,9127,9204,9273,9347,9449,9537,9614,9707,9803,9877,9957,10054,10106,10190,10256,10343,10431,10493,10557,10620,10688,10800,10911,11018,11128,11188,11243,11320"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\dumit\\.gradle\\caches\\transforms-3\\4bfa6ebde41cf482265abd5bce78c9b9\\transformed\\play-services-basement-18.3.0\\res\\values-pt-rBR\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "199",
+                        "endColumns": "140",
+                        "endOffsets": "339"
+                    },
+                    "to": {
+                        "startLines": "49",
+                        "startColumns": "4",
+                        "startOffsets": "4802",
+                        "endColumns": "144",
+                        "endOffsets": "4942"
                     }
                 },
                 {

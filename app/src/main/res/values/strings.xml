@@ -8,4 +8,7 @@
     <string name="create_acc">Create a new account</string>
     <string name="back_to_login">back to Login</string>
     <string name="welcome_back">Welcome back!</string>
+    <string name="it_seems_that_your_name_is_missing_what_is_your_name">It seems that your name is missing, what is your name?</string>
+    <string name="set_name">Set name</string>
+    <string name="my_name_is">My name is...</string>
 </resources>

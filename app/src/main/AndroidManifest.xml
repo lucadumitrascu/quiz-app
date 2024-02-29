@@ -13,13 +13,17 @@
         android:theme="@style/Theme.Material3.Light"
         tools:targetApi="31">
         <activity
-            android:name=".Register"
+            android:name=".SetName"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
             android:exported="false" />
         <activity
+            android:name=".Register"
+            android:exported="false"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
+        <activity
             android:name=".Login"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.Material3.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,10 +32,8 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"
-            android:exported="true">
-        </activity>
-
+            android:exported="true"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
     </application>
 
 </manifest>

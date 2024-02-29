@@ -4,7 +4,24 @@
             "outputFile": "com.project.quiz_app-mergeDebugResources-34:/values-lv/values-lv.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\dumit\\.gradle\\caches\\transforms-3\\557494114d0bbabc3cffaccbe3a0faba\\transformed\\play-services-basement-18.1.0\\res\\values-lv\\values.xml",
+                    "source": "C:\\Users\\dumit\\.gradle\\caches\\transforms-3\\6c7971b0b23792212c1711d2a7266e56\\transformed\\browser-1.4.0\\res\\values-lv\\values-lv.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,158,257,373",
+                        "endColumns": "102,98,115,101",
+                        "endOffsets": "153,252,368,470"
+                    },
+                    "to": {
+                        "startLines": "60,63,64,65",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "6326,6588,6687,6803",
+                        "endColumns": "102,98,115,101",
+                        "endOffsets": "6424,6682,6798,6900"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\dumit\\.gradle\\caches\\transforms-3\\4bfa6ebde41cf482265abd5bce78c9b9\\transformed\\play-services-basement-18.3.0\\res\\values-lv\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -21,20 +38,20 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\dumit\\.gradle\\caches\\transforms-3\\6c7971b0b23792212c1711d2a7266e56\\transformed\\browser-1.4.0\\res\\values-lv\\values-lv.xml",
+                    "source": "C:\\Users\\dumit\\.gradle\\caches\\transforms-3\\edbe3992402d27772fd85d40fc94140d\\transformed\\play-services-base-18.1.0\\res\\values-lv\\values.xml",
                     "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,158,257,373",
-                        "endColumns": "102,98,115,101",
-                        "endOffsets": "153,252,368,470"
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+                        "startOffsets": "193,296,453,582,686,824,951,1064,1166,1337,1442,1607,1738,1903,2054,2114,2178",
+                        "endColumns": "102,156,128,103,137,126,112,101,170,104,164,130,164,150,59,63,84",
+                        "endOffsets": "295,452,581,685,823,950,1063,1165,1336,1441,1606,1737,1902,2053,2113,2177,2262"
                     },
                     "to": {
-                        "startLines": "60,63,64,65",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "6326,6588,6687,6803",
-                        "endColumns": "102,98,115,101",
-                        "endOffsets": "6424,6682,6798,6900"
+                        "startLines": "42,43,44,45,46,47,48,49,51,52,53,54,55,56,57,58,59",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "4022,4129,4290,4423,4531,4673,4804,4921,5193,5368,5477,5646,5781,5950,6105,6169,6237",
+                        "endColumns": "106,160,132,107,141,130,116,105,174,108,168,134,168,154,63,67,88",
+                        "endOffsets": "4124,4285,4418,4526,4668,4799,4916,5022,5363,5472,5641,5776,5945,6100,6164,6232,6321"
                     }
                 },
                 {
@@ -71,23 +88,6 @@
                         "startOffsets": "374,494,604,713,799,903,1025,1107,1187,1297,1405,1511,1620,1731,1834,1946,2053,2158,2258,2343,2452,2563,2662,2773,2880,2985,3159,11574",
                         "endColumns": "119,109,108,85,103,121,81,79,109,107,105,108,110,102,111,106,104,99,84,108,110,98,110,106,104,173,98,82",
                         "endOffsets": "489,599,708,794,898,1020,1102,1182,1292,1400,1506,1615,1726,1829,1941,2048,2153,2253,2338,2447,2558,2657,2768,2875,2980,3154,3253,11652"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\dumit\\.gradle\\caches\\transforms-3\\ebca4dd04494c97b6f35f379e7b439b8\\transformed\\play-services-base-18.0.1\\res\\values-lv\\values.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
-                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
-                        "startOffsets": "193,296,453,582,686,824,951,1064,1166,1337,1442,1607,1738,1903,2054,2114,2178",
-                        "endColumns": "102,156,128,103,137,126,112,101,170,104,164,130,164,150,59,63,84",
-                        "endOffsets": "295,452,581,685,823,950,1063,1165,1336,1441,1606,1737,1902,2053,2113,2177,2262"
-                    },
-                    "to": {
-                        "startLines": "42,43,44,45,46,47,48,49,51,52,53,54,55,56,57,58,59",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "4022,4129,4290,4423,4531,4673,4804,4921,5193,5368,5477,5646,5781,5950,6105,6169,6237",
-                        "endColumns": "106,160,132,107,141,130,116,105,174,108,168,134,168,154,63,67,88",
-                        "endOffsets": "4124,4285,4418,4526,4668,4799,4916,5022,5363,5472,5641,5776,5945,6100,6164,6232,6321"
                     }
                 },
                 {

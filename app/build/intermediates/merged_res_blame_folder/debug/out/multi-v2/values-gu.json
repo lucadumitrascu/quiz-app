@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\dumit\\.gradle\\caches\\transforms-3\\ebca4dd04494c97b6f35f379e7b439b8\\transformed\\play-services-base-18.0.1\\res\\values-gu\\values.xml",
+                    "source": "C:\\Users\\dumit\\.gradle\\caches\\transforms-3\\edbe3992402d27772fd85d40fc94140d\\transformed\\play-services-base-18.1.0\\res\\values-gu\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -52,6 +52,23 @@
                         "startOffsets": "5912,6167,6268,6377",
                         "endColumns": "100,100,108,100",
                         "endOffsets": "6008,6263,6372,6473"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\dumit\\.gradle\\caches\\transforms-3\\4bfa6ebde41cf482265abd5bce78c9b9\\transformed\\play-services-basement-18.3.0\\res\\values-gu\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "142",
+                        "endOffsets": "337"
+                    },
+                    "to": {
+                        "startLines": "49",
+                        "startColumns": "4",
+                        "startOffsets": "4718",
+                        "endColumns": "146",
+                        "endOffsets": "4860"
                     }
                 },
                 {
@@ -88,23 +105,6 @@
                         "endLines": "5,33,34,35,36,37,38,39,40,60,61,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122",
                         "endColumns": "12,73,71,81,105,97,98,119,83,62,90,66,58,89,62,64,63,68,61,53,114,57,60,53,72,126,85,83,132,74,75,132,85,80,53,51,65,72,79,84,79,70,75,78,68,106,95,77,94,95,73,74,98,50,81,66,86,89,61,63,62,66,101,104,96,101,57,55,77",
                         "endOffsets": "313,3070,3142,3224,3330,3428,3527,3647,3731,6071,6162,6540,6599,6689,6752,6817,6881,6950,7012,7066,7181,7239,7300,7354,7427,7554,7640,7724,7857,7932,8008,8141,8227,8308,8362,8414,8480,8553,8633,8718,8798,8869,8945,9024,9093,9200,9296,9374,9469,9565,9639,9714,9813,9864,9946,10013,10100,10190,10252,10316,10379,10446,10548,10653,10750,10852,10910,10966,11044"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\dumit\\.gradle\\caches\\transforms-3\\557494114d0bbabc3cffaccbe3a0faba\\transformed\\play-services-basement-18.1.0\\res\\values-gu\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "195",
-                        "endColumns": "142",
-                        "endOffsets": "337"
-                    },
-                    "to": {
-                        "startLines": "49",
-                        "startColumns": "4",
-                        "startOffsets": "4718",
-                        "endColumns": "146",
-                        "endOffsets": "4860"
                     }
                 }
             ]

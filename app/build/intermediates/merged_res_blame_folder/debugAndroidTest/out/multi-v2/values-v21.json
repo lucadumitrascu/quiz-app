@@ -4,7 +4,7 @@
             "outputFile": "com.project.quiz_app.test.app-mergeDebugAndroidTestResources-3:/values-v21/values-v21.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\dumit\\.gradle\\caches\\transforms-3\\30568b380fcbd6c472dec8793871322c\\transformed\\core-1.5.0\\res\\values-v21\\values.xml",
+                    "source": "C:\\Users\\dumit\\.gradle\\caches\\transforms-3\\c04c6d1078d1da3f4c69c3d1bdc4c42b\\transformed\\core-1.5.0\\res\\values-v21\\values.xml",
                     "from": {
                         "startLines": "4,13",
                         "startColumns": "0,0",

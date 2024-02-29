@@ -6,7 +6,7 @@ com.project.quiz_app-constraintlayout-2.1.4-4 C:\Users\dumit\.gradle\caches\tran
 com.project.quiz_app-core-runtime-2.2.0-5 C:\Users\dumit\.gradle\caches\transforms-3\37ee42a5582ff2eb7fa69a9930fb65d8\transformed\core-runtime-2.2.0\res
 com.project.quiz_app-activity-1.8.0-6 C:\Users\dumit\.gradle\caches\transforms-3\385ca6362a2e46bc9cbeec877bc0ec14\transformed\activity-1.8.0\res
 com.project.quiz_app-coordinatorlayout-1.1.0-7 C:\Users\dumit\.gradle\caches\transforms-3\3ed0921003b5e1b70a51b9ad2978550f\transformed\coordinatorlayout-1.1.0\res
-com.project.quiz_app-play-services-basement-18.1.0-8 C:\Users\dumit\.gradle\caches\transforms-3\557494114d0bbabc3cffaccbe3a0faba\transformed\play-services-basement-18.1.0\res
+com.project.quiz_app-play-services-basement-18.3.0-8 C:\Users\dumit\.gradle\caches\transforms-3\4bfa6ebde41cf482265abd5bce78c9b9\transformed\play-services-basement-18.3.0\res
 com.project.quiz_app-savedstate-1.2.1-9 C:\Users\dumit\.gradle\caches\transforms-3\5d1544de2a3e762024b1f79aebada4e5\transformed\savedstate-1.2.1\res
 com.project.quiz_app-lifecycle-livedata-2.6.1-10 C:\Users\dumit\.gradle\caches\transforms-3\6032651b8bd51b88454ab7ef76385d28\transformed\lifecycle-livedata-2.6.1\res
 com.project.quiz_app-startup-runtime-1.1.1-11 C:\Users\dumit\.gradle\caches\transforms-3\6093783374f30449b58c46721f50f257\transformed\startup-runtime-1.1.1\res
@@ -26,7 +26,7 @@ com.project.quiz_app-transition-1.2.0-24 C:\Users\dumit\.gradle\caches\transform
 com.project.quiz_app-lifecycle-livedata-core-2.6.1-25 C:\Users\dumit\.gradle\caches\transforms-3\dad95d89fcba4e729ece8a3dc223a169\transformed\lifecycle-livedata-core-2.6.1\res
 com.project.quiz_app-core-ktx-1.9.0-26 C:\Users\dumit\.gradle\caches\transforms-3\e3299b036d50427e319765d5ad93528c\transformed\core-ktx-1.9.0\res
 com.project.quiz_app-profileinstaller-1.3.0-27 C:\Users\dumit\.gradle\caches\transforms-3\ea4683a70fa3ed0039e26b8ef4a2f6d7\transformed\profileinstaller-1.3.0\res
-com.project.quiz_app-play-services-base-18.0.1-28 C:\Users\dumit\.gradle\caches\transforms-3\ebca4dd04494c97b6f35f379e7b439b8\transformed\play-services-base-18.0.1\res
+com.project.quiz_app-play-services-base-18.1.0-28 C:\Users\dumit\.gradle\caches\transforms-3\edbe3992402d27772fd85d40fc94140d\transformed\play-services-base-18.1.0\res
 com.project.quiz_app-lifecycle-runtime-2.6.1-29 C:\Users\dumit\.gradle\caches\transforms-3\f2ca8899f216990f3ede3c02f837bf60\transformed\lifecycle-runtime-2.6.1\res
 com.project.quiz_app-firebase-common-20.4.2-30 C:\Users\dumit\.gradle\caches\transforms-3\f6baae7588e974020ca7def10d11e6ec\transformed\firebase-common-20.4.2\res
 com.project.quiz_app-pngs-31 C:\Users\dumit\Desktop\quiz-app\app\build\generated\res\pngs\debug

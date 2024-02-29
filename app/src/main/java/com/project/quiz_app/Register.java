@@ -13,6 +13,8 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Register extends AppCompatActivity {
 
@@ -73,9 +75,29 @@ public class Register extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(Register.this, "Account created.",
                                     Toast.LENGTH_SHORT).show();
+
+                            // Add user to database
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            String userEmail = null;
+                            if (user != null) {
+                                userEmail = user.getEmail();
+                            }
+                            User newUser = new User();
+                            newUser.setEmail(userEmail);
+                            newUser.setName("null");
+                            newUser.setScore(0);
+                            newUser.setPlace(1);
+
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            assert user != null;
+                            String userId = user.getUid();
+                            DatabaseReference mRef = database.getReference().child("Users").child(userId);
+                            mRef.setValue(newUser);
+
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent);
                             finish();
+
                         } else {
                             Toast.makeText(Register.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();

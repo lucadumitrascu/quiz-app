@@ -1356,6 +1356,7 @@ color accent_material_dark
 color accent_material_light
 color androidx_core_ripple_material_light
 color androidx_core_secondary_text_default_material_light
+color aqua
 color background_floating_material_dark
 color background_floating_material_light
 color background_material_dark
@@ -1434,8 +1435,10 @@ color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
 color foreground_material_light
+color grey
 color highlighted_text_material_dark
 color highlighted_text_material_light
+color input_text
 color m3_appbar_overlay_color
 color m3_assist_chip_icon_tint_color
 color m3_assist_chip_stroke_color
@@ -2109,6 +2112,7 @@ color switch_thumb_material_dark
 color switch_thumb_material_light
 color switch_thumb_normal_material_dark
 color switch_thumb_normal_material_light
+color text_input_layout_stroke_color
 color tooltip_background_dark
 color tooltip_background_light
 color white
@@ -2999,6 +3003,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable button_login_register
 drawable common_full_open_on_phone
 drawable common_google_signin_btn_icon_dark
 drawable common_google_signin_btn_icon_dark_focused
@@ -3025,6 +3030,7 @@ drawable design_password_eye
 drawable design_snackbar_background
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
+drawable gradient_background
 drawable ic_arrow_back_black_24
 drawable ic_clear_black_24
 drawable ic_clock_black_24dp
@@ -3294,6 +3300,8 @@ id east
 id edge
 id edit_query
 id elastic
+id email_login
+id email_register
 id embed
 id end
 id endToStart
@@ -3321,6 +3329,7 @@ id frost
 id fullscreen_header
 id ghost_view
 id ghost_view_holder
+id go_to_register
 id gone
 id graph
 id graph_wrap
@@ -3359,8 +3368,12 @@ id light
 id line1
 id line3
 id linear
+id linearLayout1
 id listMode
 id list_item
+id login_button
+id login_in_register
+id logout
 id m3_side_sheet
 id marquee
 id masked
@@ -3421,6 +3434,7 @@ id mtrl_picker_text_input_range_start
 id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
+id name_input
 id navigation_bar_item_active_indicator_view
 id navigation_bar_item_icon_container
 id navigation_bar_item_icon_view
@@ -3465,6 +3479,8 @@ id parent
 id parentPanel
 id parentRelative
 id parent_matrix
+id password_login
+id password_register
 id password_toggle
 id path
 id pathRelative
@@ -3474,11 +3490,13 @@ id pin
 id position
 id postLayout
 id pressed
+id progressBar
 id progress_circular
 id progress_horizontal
 id radio
 id ratio
 id rectangles
+id register_button
 id report_drawn
 id reverseSawtooth
 id right
@@ -3510,6 +3528,7 @@ id search_voice_btn
 id select_dialog_listview
 id selected
 id selection_type
+id set_name_button
 id sharedValueSet
 id sharedValueUnset
 id shortcut
@@ -3733,7 +3752,10 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_login
 layout activity_main
+layout activity_register
+layout activity_set_name
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout custom_dialog
@@ -3847,6 +3869,7 @@ string abc_toolbar_collapse_description
 string androidx_startup
 string app_name
 string appbar_scrolling_view_behavior
+string back_to_login
 string bottom_sheet_behavior
 string bottomsheet_action_collapse
 string bottomsheet_action_expand
@@ -3876,6 +3899,8 @@ string common_open_on_phone
 string common_signin_button_text
 string common_signin_button_text_long
 string copy_toast_msg
+string create_acc
+string email
 string error_a11y_label
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
@@ -3891,7 +3916,10 @@ string google_crash_reporting_api_key
 string google_storage_bucket
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
+string it_seems_that_your_name_is_missing_what_is_your_name
 string item_view_role_description
+string login
+string logout_text
 string m3_exceed_max_badge_text_suffix
 string m3_ref_typeface_brand_medium
 string m3_ref_typeface_brand_regular
@@ -3992,19 +4020,24 @@ string mtrl_switch_track_decoration_path
 string mtrl_switch_track_path
 string mtrl_timepicker_cancel
 string mtrl_timepicker_confirm
+string my_name_is
+string password
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
 string project_id
+string register
 string search_menu_title
 string searchbar_scrolling_view_behavior
 string searchview_clear_text_content_description
 string searchview_navigation_content_description
+string set_name
 string side_sheet_accessibility_pane_title
 string side_sheet_behavior
 string status_bar_notification_info_overflow
+string welcome_back
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog
@@ -4529,6 +4562,7 @@ style TextAppearance_MaterialComponents_Tooltip
 style TextAppearance_Widget_AppCompat_ExpandedMenu_Item
 style TextAppearance_Widget_AppCompat_Toolbar_Subtitle
 style TextAppearance_Widget_AppCompat_Toolbar_Title
+style TextInputLayoutStyle
 style Theme_AppCompat
 style Theme_AppCompat_CompactMenu
 style Theme_AppCompat_DayNight

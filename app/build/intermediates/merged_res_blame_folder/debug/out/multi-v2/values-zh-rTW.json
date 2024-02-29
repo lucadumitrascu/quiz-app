@@ -40,23 +40,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\dumit\\.gradle\\caches\\transforms-3\\ebca4dd04494c97b6f35f379e7b439b8\\transformed\\play-services-base-18.0.1\\res\\values-zh-rTW\\values.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
-                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
-                        "startOffsets": "197,294,418,529,627,730,842,938,1029,1135,1232,1357,1468,1566,1670,1722,1775",
-                        "endColumns": "96,123,110,97,102,111,95,90,105,96,124,110,97,103,51,52,69",
-                        "endOffsets": "293,417,528,626,729,841,937,1028,1134,1231,1356,1467,1565,1669,1721,1774,1844"
-                    },
-                    "to": {
-                        "startLines": "41,42,43,44,45,46,47,48,50,51,52,53,54,55,56,57,58",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "3477,3578,3706,3821,3923,4030,4146,4246,4444,4554,4655,4784,4899,5001,5109,5165,5222",
-                        "endColumns": "100,127,114,101,106,115,99,94,109,100,128,114,101,107,55,56,73",
-                        "endOffsets": "3573,3701,3816,3918,4025,4141,4241,4336,4549,4650,4779,4894,4996,5104,5160,5217,5291"
-                    }
-                },
-                {
                     "source": "C:\\Users\\dumit\\.gradle\\caches\\transforms-3\\862bc1cdce1c01a860ed8e456f464169\\transformed\\core-1.9.0\\res\\values-zh-rTW\\values-zh-rTW.xml",
                     "from": {
                         "startLines": "2",
@@ -74,7 +57,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\dumit\\.gradle\\caches\\transforms-3\\557494114d0bbabc3cffaccbe3a0faba\\transformed\\play-services-basement-18.1.0\\res\\values-zh-rTW\\values.xml",
+                    "source": "C:\\Users\\dumit\\.gradle\\caches\\transforms-3\\edbe3992402d27772fd85d40fc94140d\\transformed\\play-services-base-18.1.0\\res\\values-zh-rTW\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+                        "startOffsets": "197,294,418,529,627,730,842,938,1029,1135,1232,1357,1468,1566,1670,1722,1775",
+                        "endColumns": "96,123,110,97,102,111,95,90,105,96,124,110,97,103,51,52,69",
+                        "endOffsets": "293,417,528,626,729,841,937,1028,1134,1231,1356,1467,1565,1669,1721,1774,1844"
+                    },
+                    "to": {
+                        "startLines": "41,42,43,44,45,46,47,48,50,51,52,53,54,55,56,57,58",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "3477,3578,3706,3821,3923,4030,4146,4246,4444,4554,4655,4784,4899,5001,5109,5165,5222",
+                        "endColumns": "100,127,114,101,106,115,99,94,109,100,128,114,101,107,55,56,73",
+                        "endOffsets": "3573,3701,3816,3918,4025,4141,4241,4336,4549,4650,4779,4894,4996,5104,5160,5217,5291"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\dumit\\.gradle\\caches\\transforms-3\\4bfa6ebde41cf482265abd5bce78c9b9\\transformed\\play-services-basement-18.3.0\\res\\values-zh-rTW\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
