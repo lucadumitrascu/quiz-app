@@ -22,7 +22,7 @@
         android:textStyle="bold"/>
 
     <androidx.appcompat.widget.AppCompatButton
-
+        android:id="@+id/generate_quiz"
         android:layout_width="300sp"
         android:textSize="30sp"
         android:layout_margin="6sp"

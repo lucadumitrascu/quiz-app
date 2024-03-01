@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
     TextView displayName;
-    Button logoutButton;
+    Button logoutButton, generateQuizButton;
     FirebaseUser user;
 
     @Override
@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         logoutButton = findViewById(R.id.logout);
+        generateQuizButton = findViewById(R.id.generate_quiz);
         user = auth.getCurrentUser();
 
         if (user == null) {
@@ -76,6 +77,12 @@ public class MainActivity extends AppCompatActivity {
         logoutButton.setOnClickListener(v -> {
             FirebaseAuth.getInstance().signOut();
             Intent intent = new Intent(getApplicationContext(), Login.class);
+            startActivity(intent);
+            finish();
+        });
+
+        generateQuizButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), Quiz.class);
             startActivity(intent);
             finish();
         });

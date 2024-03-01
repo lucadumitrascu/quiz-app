@@ -15,4 +15,10 @@
     <string name="generate_quiz">Generate quiz</string>
     <string name="change_name">Change name</string>
     <string name="leaderboard">Leaderboard</string>
+    <string name="this_will_be_the_question">This will be the question</string>
+    <string name="a">A</string>
+    <string name="b">B</string>
+    <string name="c">C</string>
+    <string name="d">D</string>
+    <string name="next_question">Next question!</string>
 </resources>
