@@ -1,5 +1,6 @@
 package com.project.quiz_app;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,11 +10,25 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class QuizMenu extends AppCompatActivity {
 
 
+
+    // Score textview
+    TextView scoreTextView;
+
+    // Buttons
     Button generateRandomQuiz;
 
     // Difficulty option
@@ -64,6 +79,26 @@ public class QuizMenu extends AppCompatActivity {
         autoCompleteTextViewQuestionsNumber.setOnItemClickListener((adapterView, view, position, id) -> {
             String item = adapterView.getItemAtPosition(position).toString();
             Toast.makeText(QuizMenu.this, "Number of questions: "+ item, Toast.LENGTH_SHORT).show();
+        });
+
+        // Fetch last quiz score from DB
+        scoreTextView = findViewById(R.id.last_score);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        assert user != null;
+        DatabaseReference lastScoreRef = database.getReference()
+                .child("Users").child(user.getUid()).child("lastQuizScore");
+        lastScoreRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String oldText = scoreTextView.getText().toString();
+                oldText += " "+dataSnapshot.getValue(Integer.class);
+                scoreTextView.setText(oldText);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Error
+            }
         });
 
     }

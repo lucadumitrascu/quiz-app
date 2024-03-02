@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         logoutButton = findViewById(R.id.logout);
         generateQuizButton = findViewById(R.id.generate_quiz);
         user = auth.getCurrentUser();
-
         if (user == null) {
             Intent intent = new Intent(getApplicationContext(), Login.class);
             startActivity(intent);
@@ -82,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         generateQuizButton.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), Quiz.class);
+            Intent intent = new Intent(getApplicationContext(), QuizMenu.class);
             startActivity(intent);
             finish();
         });

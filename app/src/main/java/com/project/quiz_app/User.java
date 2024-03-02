@@ -3,16 +3,18 @@ package com.project.quiz_app;
 public class User {
 
     String name, email;
-    int place, score;
+    int place, totalScore, lastQuizScore;
 
-    public User(String name, String email, int place, int score) {
+    public User(String name, String email, int place, int totalScore, int lastQuizScore) {
         this.name = name;
         this.email = email;
         this.place = place;
-        this.score = score;
+        this.lastQuizScore = lastQuizScore;
+        this.totalScore = totalScore;
     }
 
-    public User(){}
+    public User() {
+    }
 
     public String getName() {
         return name;
@@ -38,11 +40,19 @@ public class User {
         this.place = place;
     }
 
-    public int getScore() {
-        return score;
+    public int getTotalScore() {
+        return totalScore;
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public void setTotalScore(int totalScore) {
+        this.totalScore = totalScore;
+    }
+
+    public int getLastQuizScore() {
+        return lastQuizScore;
+    }
+
+    public void setLastQuizScore(int lastQuizScore) {
+        this.lastQuizScore = lastQuizScore;
     }
 }

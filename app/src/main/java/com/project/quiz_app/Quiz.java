@@ -3,12 +3,21 @@ package com.project.quiz_app;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
 import java.util.Random;
@@ -111,14 +120,17 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
                     setValuesToQuiz(quiz, 0);
                 } else {
                     questionsTextView.setText("Questions were not generated...");
-                    setGlobalVariableQuiz(quiz);
+                    Intent intent = new Intent(getApplicationContext(), Quiz.class);
+                    startActivity(intent);
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<QuizObject> call, @NonNull Throwable t) {
                 questionsTextView.setText("Questions were not generated...");
-                // Relaunch quiz screen
+                Intent intent = new Intent(getApplicationContext(), Quiz.class);
+                startActivity(intent);
+
             }
         });
     }
@@ -139,7 +151,7 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
 
             int[] position = getRandomIndexVector();
             Random rand = new Random();
-            int randomOrder = (rand.nextInt((3 - 1) + 1) + 1) - 1;
+            int randomOrder = (rand.nextInt((4 - 1) + 1) + 1) - 1;
 
             switch (randomOrder) {
                 case 0:
@@ -172,7 +184,27 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
             }
 
         } else {
-            questionsTextView.setText("Score: " + score);
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            assert user != null;
+
+            DatabaseReference totalScoreRef = database.getReference().child("Users").child(user.getUid()).child("totalScore");
+            DatabaseReference lastScoreRef = database.getReference().child("Users").child(user.getUid()).child("lastQuizScore");
+            totalScoreRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    Integer totalScore = dataSnapshot.getValue(Integer.class);
+                    totalScore += score;
+                    totalScoreRef.setValue(totalScore);
+                    lastScoreRef.setValue(score);
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    // Error
+                }
+            });
+            Intent intent = new Intent(getApplicationContext(), QuizMenu.class);
+            startActivity(intent);
             questionIndex++;
         }
     }

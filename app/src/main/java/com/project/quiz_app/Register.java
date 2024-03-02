@@ -85,8 +85,9 @@ public class Register extends AppCompatActivity {
                             User newUser = new User();
                             newUser.setEmail(userEmail);
                             newUser.setName("null");
-                            newUser.setScore(0);
-                            newUser.setPlace(1);
+                            newUser.setTotalScore(0);
+                            newUser.setLastQuizScore(0);
+                            newUser.setPlace(0);
 
                             FirebaseDatabase database = FirebaseDatabase.getInstance();
                             assert user != null;

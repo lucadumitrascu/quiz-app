@@ -10,8 +10,8 @@
     <string name="welcome_back">Welcome back!</string>
     <string name="it_seems_that_your_name_is_missing_what_is_your_name">It seems that your name is missing, what is your name?</string>
     <string name="set_name">Set name</string>
-    <string name="my_name_is">My name is...</string>
-    <string name="loading_name">Loading name...</string>
+    <string name="my_name_is">My name is…</string>
+    <string name="loading_name">Loading name…</string>
     <string name="generate_quiz">Generate quiz</string>
     <string name="change_name">Change name</string>
     <string name="leaderboard">Leaderboard</string>
@@ -21,4 +21,18 @@
     <string name="c">C</string>
     <string name="d">D</string>
     <string name="next_question">Next question!</string>
+    <string name="score">Score:</string>
+    <string name="difficulty">Difficulty</string>
+    <string name="choose_difficulty">Choose difficulty</string>
+    <string name="category">Category</string>
+    <string name="choose_category">Choose category</string>
+    <string name="number_of_questions">Number of questions</string>
+    <string name="choose_number_of_questions">Choose number of questions</string>
+    <string name="save">Save</string>
+    <string name="generate_random_quiz">Generate random quiz</string>
+    <string name="run_quiz_with_options_above">Run quiz with options above</string>
+    <string name="generate_your_quiz">Generate your quiz:</string>
+    <string name="quizapp">QuizApp</string>
+    <string name="score_for_last_quiz">Score for last quiz:</string>
+    <string name="home">Home</string>
 </resources>
