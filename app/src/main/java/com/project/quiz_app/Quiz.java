@@ -38,7 +38,7 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
 
     // Quiz running variables
     int questionIndex = 0;
-    String selectedAnswer = "";
+    String selectedAnswer = "null";
     int score = 0;
 
     @Override
@@ -136,30 +136,57 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
             question = question.replace("&amp;", "&");
             question = question.replace("&eacute;", "e");
             questionsTextView.setText(question);
-            // int[] position = getRandomIndexVector();
-            // TODO: make random order to questions!
-            respA.setText(quiz.results.get(index).getIncorrect_answers().get(0));
-            respB.setText(quiz.results.get(index).getIncorrect_answers().get(1));
-            respC.setText(quiz.results.get(index).getIncorrect_answers().get(2));
-            respD.setText(quiz.results.get(index).getCorrect_answer());
+
+            int[] position = getRandomIndexVector();
+            Random rand = new Random();
+            int randomOrder = (rand.nextInt((3 - 1) + 1) + 1) - 1;
+
+            switch (randomOrder) {
+                case 0:
+                    respA.setText(quiz.results.get(index).getCorrect_answer());
+                    respB.setText(quiz.results.get(index).getIncorrect_answers().get(position[0]));
+                    respC.setText(quiz.results.get(index).getIncorrect_answers().get(position[1]));
+                    respD.setText(quiz.results.get(index).getIncorrect_answers().get(position[2]));
+                    break;
+
+                case 1:
+                    respA.setText(quiz.results.get(index).getIncorrect_answers().get(position[0]));
+                    respB.setText(quiz.results.get(index).getCorrect_answer());
+                    respC.setText(quiz.results.get(index).getIncorrect_answers().get(position[1]));
+                    respD.setText(quiz.results.get(index).getIncorrect_answers().get(position[2]));
+                    break;
+
+                case 2:
+                    respA.setText(quiz.results.get(index).getIncorrect_answers().get(position[0]));
+                    respB.setText(quiz.results.get(index).getIncorrect_answers().get(position[1]));
+                    respC.setText(quiz.results.get(index).getCorrect_answer());
+                    respD.setText(quiz.results.get(index).getIncorrect_answers().get(position[2]));
+                    break;
+
+                default:
+                    respA.setText(quiz.results.get(index).getIncorrect_answers().get(position[0]));
+                    respB.setText(quiz.results.get(index).getIncorrect_answers().get(position[1]));
+                    respC.setText(quiz.results.get(index).getIncorrect_answers().get(position[2]));
+                    respD.setText(quiz.results.get(index).getCorrect_answer());
+                    break;
+            }
+
         } else {
             questionsTextView.setText("Score: " + score);
             questionIndex++;
         }
     }
 
-
-    // Useful later:
     int[] getRandomIndexVector() {
-        int[] indexVector = new int[]{5, 5, 5, 5};
+        int[] indexVector = new int[]{5, 5, 5};
         Random rand = new Random();
         int randomValue = 0;
-        indexVector[0] = (rand.nextInt((4 - 1) + 1) + 1) - 1;
+        indexVector[0] = (rand.nextInt((3 - 1) + 1) + 1) - 1;
         int currentElem = 1;
 
-        for (int i = 1; i < 4; i++) {
+        for (int i = 1; i < 3; i++) {
             do {
-                randomValue = (rand.nextInt((4 - 1) + 1) + 1) - 1;
+                randomValue = (rand.nextInt((3 - 1) + 1) + 1) - 1;
                 indexVector[i] = randomValue;
             }
             while (!checkDuplicate(i, randomValue, indexVector));
