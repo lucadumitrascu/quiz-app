@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.Random;
 
@@ -28,16 +29,21 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 
 public class Quiz extends AppCompatActivity implements View.OnClickListener {
 
     interface Request {
-        @GET("https://opentdb.com/api.php?amount=10&type=multiple")
-        Call<QuizObject> get();
+        @GET("https://opentdb.com/api.php?type=multiple")
+        Call<QuizObject> get(@Query("amount") String amount,
+                             @Query("difficulty") String difficulty,
+                             @Query("category") String category);
+
     }
 
-    // Quiz variable
+    // Quiz variables
+    QuizConfiguration quizConfiguration;
     QuizObject quiz;
 
     // Visual variables
@@ -62,6 +68,7 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
         respD = findViewById(R.id.D_response);
         nextButton = findViewById(R.id.next_button);
 
+        quizConfiguration = (QuizConfiguration) getIntent().getSerializableExtra("config");
         getQuestions();
 
         respA.setOnClickListener(this);
@@ -69,7 +76,6 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
         respC.setOnClickListener(this);
         respD.setOnClickListener(this);
         nextButton.setOnClickListener(this);
-
     }
 
     @Override
@@ -83,7 +89,7 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
 
         if (clickedButton.getId() == R.id.next_button) {
 
-            if (questionIndex <= 9) {
+            if (questionIndex <= Integer.parseInt(quizConfiguration.getNumberOfQuestions())) {
                 if (Objects.equals(selectedAnswer, quiz.results.get(questionIndex).correct_answer)) {
                     score++;
                 }
@@ -110,7 +116,10 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
                 .build();
 
         Request request = retrofit.create(Request.class);
-        request.get().enqueue(new Callback<QuizObject>() {
+        request.get(
+                quizConfiguration.getNumberOfQuestions(),
+                quizConfiguration.getDifficulty(),
+                quizConfiguration.getCategory()).enqueue(new Callback<QuizObject>() {
 
             @Override
             public void onResponse(@NonNull Call<QuizObject> call, @NonNull Response<QuizObject> response) {
@@ -140,7 +149,7 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
     }
 
     void setValuesToQuiz(QuizObject quiz, int index) {
-        if (index <= 9) {
+        if (index < Integer.parseInt(quizConfiguration.getNumberOfQuestions())) {
 
             String question = quiz.results.get(index).getQuestion();
             question = question.replace("&quot;", "'");
@@ -198,6 +207,7 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
                     totalScoreRef.setValue(totalScore);
                     lastScoreRef.setValue(score);
                 }
+
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
                     // Error
@@ -235,4 +245,3 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
         return true;
     }
 }
-

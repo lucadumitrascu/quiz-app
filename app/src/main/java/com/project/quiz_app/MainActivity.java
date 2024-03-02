@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         logoutButton = findViewById(R.id.logout);
-        generateQuizButton = findViewById(R.id.generate_quiz);
+        generateQuizButton = findViewById(R.id.generate_quiz_main);
         user = auth.getCurrentUser();
         if (user == null) {
             Intent intent = new Intent(getApplicationContext(), Login.class);
@@ -56,8 +56,7 @@ public class MainActivity extends AppCompatActivity {
                             Intent intent = new Intent(getApplicationContext(), SetName.class);
                             startActivity(intent);
                             finish();
-                        }
-                        else {
+                        } else {
                             displayName = findViewById(R.id.display_name);
                             String name = "Hello, ";
                             name += userFromDB.getName();
