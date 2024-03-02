@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10sp"
+        android:fontFamily="sans-serif-black"
+        android:gravity="start"
+        android:layout_marginStart="10sp"
+        android:text="@string/generate_your_quiz"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="350sp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5sp"
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/text_input_layout_quiz_options">
+
+        <AutoCompleteTextView
+            android:id="@+id/auto_complete_textview_difficulty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/difficulty"
+            android:inputType="none"
+            android:text="@string/choose_difficulty"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textStyle="bold" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="350sp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5sp"
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/text_input_layout_quiz_options">
+
+        <AutoCompleteTextView
+            android:id="@+id/auto_complete_textview_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/category"
+            android:inputType="none"
+            android:text="@string/choose_category"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textStyle="bold" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="350sp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5sp"
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/text_input_layout_quiz_options">
+
+        <AutoCompleteTextView
+            android:id="@+id/auto_complete_textview_number_of_questions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/number_of_questions"
+            android:inputType="none"
+            android:text="@string/choose_number_of_questions"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textStyle="bold" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/save_quiz_options_button"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#5AA8AF"
+            android:layout_margin="5sp"
+            android:text="@string/run_quiz_with_options_above"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/generate_random_quiz_button"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#5AA8AF"
+            android:layout_margin="5sp"
+            android:text="@string/generate_random_quiz"
+            android:textColor="@color/white" />
+    </LinearLayout>
+</LinearLayout>
