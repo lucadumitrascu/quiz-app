@@ -9,6 +9,20 @@
     android:background="@drawable/gradient_background"
     tools:context=".MainActivity">
 
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40sp"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center"
+        android:text="@string/quizapp"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"/>
+
     <TextView
         android:id="@+id/display_name"
         android:layout_width="match_parent"
@@ -16,6 +30,7 @@
         android:layout_marginBottom="10sp"
         android:fontFamily="sans-serif-black"
         android:gravity="start"
+        android:layout_marginStart="20sp"
         android:text="@string/loading_name"
         android:textColor="@color/white"
         android:textSize="30sp"
@@ -59,10 +74,11 @@
         android:id="@+id/logout"
         android:layout_width="300sp"
         android:textSize="30sp"
-        android:layout_margin="6sp"
         android:background="@drawable/main_button"
         android:textAllCaps="false"
         android:textColor="@color/white"
+        android:layout_marginTop="6sp"
+        android:layout_marginBottom="50sp"
         android:layout_height="wrap_content"
         android:text="@string/logout_text" />
 </LinearLayout>
