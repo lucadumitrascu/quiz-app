@@ -34,5 +34,6 @@
     <string name="generate_your_quiz">Generate your quiz:</string>
     <string name="quizapp">QuizApp</string>
     <string name="score_for_last_quiz">Score for last quiz:</string>
+    <string name="questions_were_not_generated">Questions were not generated…</string>
     <string name="home">Home</string>
 </resources>

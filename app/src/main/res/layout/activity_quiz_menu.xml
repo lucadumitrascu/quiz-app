@@ -87,6 +87,7 @@
             android:id="@+id/auto_complete_textview_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:dropDownHeight="320sp"
             android:hint="@string/category"
             android:inputType="none"
             android:text="@string/choose_category"

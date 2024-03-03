@@ -128,7 +128,7 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
                     setGlobalVariableQuiz(quiz);
                     setValuesToQuiz(quiz, 0);
                 } else {
-                    questionsTextView.setText("Questions were not generated...");
+                    questionsTextView.setText(R.string.questions_were_not_generated);
                     Intent intent = new Intent(getApplicationContext(), Quiz.class);
                     startActivity(intent);
                 }
@@ -136,7 +136,7 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
 
             @Override
             public void onFailure(@NonNull Call<QuizObject> call, @NonNull Throwable t) {
-                questionsTextView.setText("Questions were not generated...");
+                questionsTextView.setText(R.string.questions_were_not_generated);
                 Intent intent = new Intent(getApplicationContext(), Quiz.class);
                 startActivity(intent);
 
@@ -219,6 +219,8 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
+
+    // Generate random order to questions
     int[] getRandomIndexVector() {
         int[] indexVector = new int[]{5, 5, 5};
         Random rand = new Random();

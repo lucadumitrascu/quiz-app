@@ -41,7 +41,7 @@ public class QuizMenu extends AppCompatActivity {
             "Sports", "Geography", "History", "Politics",
             "Art", "Celebrities", "Animals", "Vehicles",
             "Comics", "Gadgets", "Anime & Manga", "Cartoon & Animations"};
-    String[] numberItem = {"5", "10", "25", "50", "100"};
+    String[] numberItem = {"5", "10", "25", "50"};
     AutoCompleteTextView autoCompleteTextViewDifficulty;
     AutoCompleteTextView autoCompleteTextViewCategory;
     AutoCompleteTextView autoCompleteTextViewQuestionsNumber;
@@ -112,7 +112,7 @@ public class QuizMenu extends AppCompatActivity {
             difficulty = checkDifficulty(difficulty);
             category = getCategoryNumber(category);
             amount = checkAmount(amount);
-            // All of the categories have a numeric value in get URL
+            // All of the categories have a numeric value in "get" URL
             // So, it is needed a conversion between text values to numeric values
             quizConfiguration.setDifficulty(difficulty);
             quizConfiguration.setCategory(category);
@@ -142,7 +142,8 @@ public class QuizMenu extends AppCompatActivity {
     }
 
     private String checkDifficulty(String difficulty) {
-        if (difficulty == null || difficulty.equals("choose difficulty")) {
+        if (difficulty == null || difficulty.equals("choose difficulty")
+        || difficulty.equals("any difficulty")) {
             return "0";
         }
         return difficulty;
