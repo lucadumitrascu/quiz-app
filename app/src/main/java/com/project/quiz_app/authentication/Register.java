@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -18,14 +16,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.project.quiz_app.MainActivity;
 import com.project.quiz_app.R;
 
-public class Register extends AppCompatActivity {
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
+public class Register extends AppCompatActivity {
 
     FirebaseAuth mAuth;
     TextInputEditText emailInput, passwordInput;
     Button registerButton;
     Button goToLogin;
-
 
     @Override
     public void onStart() {
@@ -49,6 +49,7 @@ public class Register extends AppCompatActivity {
         passwordInput = findViewById(R.id.password_register);
         registerButton = findViewById(R.id.register_button);
         goToLogin = findViewById(R.id.login_in_register);
+
         goToLogin.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), Login.class);
             startActivity(intent);
@@ -86,7 +87,14 @@ public class Register extends AppCompatActivity {
                             newUser.setName("null");
                             newUser.setTotalScore(0);
                             newUser.setLastQuizScore(0);
-                            newUser.setPlace(0);
+                            newUser.setPlaceInLeaderboard(0);
+                            newUser.setDailyLastQuizScore(0);
+                            newUser.setDailyTotalScore(0);
+
+                            Calendar dateTimeNow = Calendar.getInstance();
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
+                            String dateAndTime = dateFormat.format(dateTimeNow.getTime());
+                            newUser.setDailyQuizAvailableDate(dateAndTime);
 
                             FirebaseDatabase database = FirebaseDatabase.getInstance();
                             assert user != null;

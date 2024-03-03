@@ -36,7 +36,6 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="350sp"
@@ -77,7 +76,6 @@
             android:textAllCaps="false"
             android:textColor="@color/white" />
 
-
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/login_in_register"
             android:layout_width="wrap_content"
@@ -90,7 +88,7 @@
             android:text="@string/back_to_login"
             android:textAllCaps="false"
             android:textColor="@color/white" />
-    </LinearLayout>
 
+    </LinearLayout>
 
 </LinearLayout>

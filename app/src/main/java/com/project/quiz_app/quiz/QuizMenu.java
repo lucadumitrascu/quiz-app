@@ -1,22 +1,40 @@
 package com.project.quiz_app.quiz;
 
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.project.quiz_app.DialogObject;
+import com.project.quiz_app.MainActivity;
 import com.project.quiz_app.R;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class QuizMenu extends AppCompatActivity {
 
-
     // Buttons
-    Button generateRandomQuiz;
-    Button generateQuizWithConfiguration;
+    Button generateRandomQuizButton;
+    Button generateQuizWithConfigurationButton;
 
     // Options
     String[] difficultyItem = {"Any Difficulty", "Easy", "Medium", "Hard"};
@@ -32,10 +50,18 @@ public class QuizMenu extends AppCompatActivity {
     AutoCompleteTextView autoCompleteTextViewQuestionsNumber;
     ArrayAdapter<String> adapterItems;
 
+    // Time variable
+    Calendar dateAndTimeNow;
+    Calendar dateAndTimeAfter24h;
+
+    // Dialog object
+    DialogObject dialogObject = new DialogObject(QuizMenu.this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_menu);
+        checkDailyQuiz();
 
         autoCompleteTextViewDifficulty = findViewById(R.id.auto_complete_textview_difficulty);
         adapterItems = new ArrayAdapter<>(this, R.layout.list_item, difficultyItem);
@@ -63,8 +89,8 @@ public class QuizMenu extends AppCompatActivity {
         });
 
         // Generate quiz with configuration
-        generateQuizWithConfiguration = findViewById(R.id.generate_quiz_button);
-        generateQuizWithConfiguration.setOnClickListener(v -> {
+        generateQuizWithConfigurationButton = findViewById(R.id.generate_quiz_button);
+        generateQuizWithConfigurationButton.setOnClickListener(v -> {
 
             Intent intent = new Intent(getApplicationContext(), Quiz.class);
 
@@ -88,13 +114,64 @@ public class QuizMenu extends AppCompatActivity {
             finish();
         });
 
-        generateRandomQuiz = findViewById(R.id.generate_random_quiz_button);
-        generateRandomQuiz.setOnClickListener(v -> {
+        generateRandomQuizButton = findViewById(R.id.generate_random_quiz_button);
+        generateRandomQuizButton.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), Quiz.class);
             intent.putExtra("config", new QuizConfiguration(
                     "0", "0", "10"));
             startActivity(intent);
             finish();
+        });
+
+        OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                ActivityOptions options = ActivityOptions.makeCustomAnimation(getApplicationContext(),
+                        R.anim.slide_in_left, android.R.anim.slide_out_right);
+                startActivity(intent, options.toBundle());
+                finish();
+            }
+        };
+        getOnBackPressedDispatcher().addCallback(this, onBackPressedCallback);
+    }
+
+    private void checkDailyQuiz() {
+
+        dateAndTimeAfter24h = Calendar.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        assert user != null;
+
+        DatabaseReference date = database.getReference()
+                .child("Users").child(user.getUid()).child("dailyQuizAvailableDate");
+
+        date.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String dateString = dataSnapshot.getValue(String.class);
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
+                Date data;
+                try {
+                    assert dateString != null;
+                    data = dateFormat.parse(dateString);
+                    assert data != null;
+                    dateAndTimeAfter24h.setTime(data);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                dateAndTimeNow = Calendar.getInstance();
+
+                long compare = dateAndTimeNow.getTimeInMillis() - dateAndTimeAfter24h.getTimeInMillis();
+                if (compare >= 0) {
+                    dialogObject.dailyQuizDialog();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Error
+            }
         });
     }
 

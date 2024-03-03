@@ -15,7 +15,6 @@ import com.project.quiz_app.MainActivity;
 import com.project.quiz_app.R;
 
 public class SetName extends AppCompatActivity {
-
     Button button;
     TextView textView;
 

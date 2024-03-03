@@ -6,9 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -46,6 +44,7 @@ public class Login extends AppCompatActivity {
         passwordInput = findViewById(R.id.password_login);
         loginButton = findViewById(R.id.login_button);
         goToRegister = findViewById(R.id.go_to_register);
+
         goToRegister.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), Register.class);
             startActivity(intent);
@@ -67,7 +66,6 @@ public class Login extends AppCompatActivity {
                 return;
             }
 
-
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
@@ -80,8 +78,6 @@ public class Login extends AppCompatActivity {
                                     Toast.LENGTH_SHORT).show();
                         }
                     });
-
         });
-
     }
 }

@@ -2,6 +2,7 @@ package com.project.quiz_app;
 
 import static android.content.ContentValues.TAG;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.project.quiz_app.authentication.Login;
 import com.project.quiz_app.authentication.SetName;
 import com.project.quiz_app.authentication.User;
+import com.project.quiz_app.quiz.DailyQuiz;
 import com.project.quiz_app.quiz.QuizMenu;
 
 import java.util.Objects;
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
     TextView displayName;
-    Button logoutButton, generateQuizButton;
+    Button logoutButton, practiceQuizButton, dailyQuizButton;
     FirebaseUser user;
 
     DialogObject dialogObject = new DialogObject(MainActivity.this);
@@ -40,11 +42,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        dialogObject.startLoadingDialog();
-
-
         logoutButton = findViewById(R.id.logout);
-        generateQuizButton = findViewById(R.id.generate_quiz_main);
+        practiceQuizButton = findViewById(R.id.practice_quiz_generate);
+        dailyQuizButton = findViewById(R.id.daily_quiz);
 
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
                             name += userFromDB.getName();
                             displayName.setText(name);
                         }
-                        dialogObject.dismissDialog();
                     }
                 }
 
@@ -83,6 +82,11 @@ public class MainActivity extends AppCompatActivity {
             });
 
         }
+        dailyQuizButton.setOnClickListener(v->{
+            Intent intent = new Intent(getApplicationContext(), DailyQuiz.class);
+            startActivity(intent);
+            finish();
+        });
 
         logoutButton.setOnClickListener(v -> {
             FirebaseAuth.getInstance().signOut();
@@ -91,10 +95,18 @@ public class MainActivity extends AppCompatActivity {
             finish();
         });
 
-        generateQuizButton.setOnClickListener(v -> {
+        practiceQuizButton.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), QuizMenu.class);
             startActivity(intent);
             finish();
         });
+
+        OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                dialogObject.exitAppDialog();
+            }
+        };
+        getOnBackPressedDispatcher().addCallback(this, onBackPressedCallback);
     }
 }

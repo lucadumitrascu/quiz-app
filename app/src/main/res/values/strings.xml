@@ -12,7 +12,6 @@
     <string name="set_name">Set name</string>
     <string name="my_name_is">My name is…</string>
     <string name="loading_name">Loading name…</string>
-    <string name="generate_quiz">Generate quiz</string>
     <string name="change_name">Change name</string>
     <string name="leaderboard">Leaderboard</string>
     <string name="this_will_be_the_question">This will be the question</string>
@@ -39,5 +38,15 @@
     <string name="home">Home</string>
     <string name="loading">Loading…</string>
     <string name="ok">OK</string>
+    <string name="close_quiz">Close quiz?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="daily_quiz">Daily quiz</string>
+    <string name="practice">Practice</string>
+    <string name="daily_quiz_available">Daily quiz available</string>
+    <string name="proceed">Proceed</string>
+    <string name="later">Later</string>
+    <string name="daily_quiz_not_available">Daily quiz not available</string>
+    <string name="exit_quizapp">Exit QuizApp?</string>
 
 </resources>

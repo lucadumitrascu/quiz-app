@@ -41,7 +41,6 @@
             android:textStyle="bold" />
     </com.google.android.material.textfield.TextInputLayout>
 
-
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="350sp"
@@ -62,7 +61,6 @@
             android:textColorHint="@color/white"
             android:textStyle="bold" />
     </com.google.android.material.textfield.TextInputLayout>
-
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
@@ -108,5 +106,7 @@
             android:backgroundTint="#5AA8AF"
             android:text="@string/generate_random_quiz"
             android:textColor="@color/white" />
+
     </LinearLayout>
+
 </LinearLayout>
