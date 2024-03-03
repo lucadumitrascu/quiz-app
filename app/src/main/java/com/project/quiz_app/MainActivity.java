@@ -33,17 +33,20 @@ public class MainActivity extends AppCompatActivity {
     Button logoutButton, generateQuizButton;
     FirebaseUser user;
 
-    LoadingDialog loadingDialog = new LoadingDialog(MainActivity.this);
+    DialogObject dialogObject = new DialogObject(MainActivity.this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        loadingDialog.startLoadingDialog();
+        dialogObject.startLoadingDialog();
 
-        auth = FirebaseAuth.getInstance();
+
         logoutButton = findViewById(R.id.logout);
         generateQuizButton = findViewById(R.id.generate_quiz_main);
+
+        auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         if (user == null) {
             Intent intent = new Intent(getApplicationContext(), Login.class);
@@ -68,11 +71,11 @@ public class MainActivity extends AppCompatActivity {
                             String name = "Hello, ";
                             name += userFromDB.getName();
                             displayName.setText(name);
-
                         }
-                        loadingDialog.dismissDialog();
+                        dialogObject.dismissDialog();
                     }
                 }
+
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
                     Log.w(TAG, "loadPost:onCancelled", databaseError.toException());

@@ -1,6 +1,6 @@
 package com.project.quiz_app.quiz;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,30 +8,17 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.project.quiz_app.MainActivity;
 import com.project.quiz_app.R;
 
 public class QuizMenu extends AppCompatActivity {
 
 
-    // Score textview
-    TextView scoreTextView;
-
     // Buttons
     Button generateRandomQuiz;
     Button generateQuizWithConfiguration;
 
-    // Difficulty option
+    // Options
     String[] difficultyItem = {"Any Difficulty", "Easy", "Medium", "Hard"};
     String[] categoryItem = {"Any Category", "General Knowledge", "Books", "Film", "Music",
             "Musicals & Theaters", "Television", "Video Games", "Board Games",
@@ -51,7 +38,7 @@ public class QuizMenu extends AppCompatActivity {
         setContentView(R.layout.activity_quiz_menu);
 
         autoCompleteTextViewDifficulty = findViewById(R.id.auto_complete_textview_difficulty);
-        adapterItems = new ArrayAdapter<String>(this, R.layout.list_item, difficultyItem);
+        adapterItems = new ArrayAdapter<>(this, R.layout.list_item, difficultyItem);
         autoCompleteTextViewDifficulty.setAdapter(adapterItems);
         autoCompleteTextViewDifficulty.setOnItemClickListener((adapterView, view, position, id) -> {
             String item = adapterView.getItemAtPosition(position).toString();
@@ -60,7 +47,7 @@ public class QuizMenu extends AppCompatActivity {
 
 
         autoCompleteTextViewCategory = findViewById(R.id.auto_complete_textview_category);
-        adapterItems = new ArrayAdapter<String>(this, R.layout.list_item, categoryItem);
+        adapterItems = new ArrayAdapter<>(this, R.layout.list_item, categoryItem);
         autoCompleteTextViewCategory.setAdapter(adapterItems);
         autoCompleteTextViewCategory.setOnItemClickListener((adapterView, view, position, id) -> {
             String item = adapterView.getItemAtPosition(position).toString();
@@ -68,32 +55,11 @@ public class QuizMenu extends AppCompatActivity {
         });
 
         autoCompleteTextViewQuestionsNumber = findViewById(R.id.auto_complete_textview_number_of_questions);
-        adapterItems = new ArrayAdapter<String>(this, R.layout.list_item, numberItem);
+        adapterItems = new ArrayAdapter<>(this, R.layout.list_item, numberItem);
         autoCompleteTextViewQuestionsNumber.setAdapter(adapterItems);
         autoCompleteTextViewQuestionsNumber.setOnItemClickListener((adapterView, view, position, id) -> {
             String item = adapterView.getItemAtPosition(position).toString();
             Toast.makeText(QuizMenu.this, "Number of questions: " + item, Toast.LENGTH_SHORT).show();
-        });
-
-        // Fetch last quiz score from DB
-        scoreTextView = findViewById(R.id.last_score);
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        assert user != null;
-        DatabaseReference lastScoreRef = database.getReference()
-                .child("Users").child(user.getUid()).child("lastQuizScore");
-        lastScoreRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String oldText = scoreTextView.getText().toString();
-                oldText += " " + dataSnapshot.getValue(Integer.class);
-                scoreTextView.setText(oldText);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Error
-            }
         });
 
         // Generate quiz with configuration
@@ -141,7 +107,7 @@ public class QuizMenu extends AppCompatActivity {
 
     private String checkDifficulty(String difficulty) {
         if (difficulty == null || difficulty.equals("choose difficulty")
-        || difficulty.equals("any difficulty")) {
+                || difficulty.equals("any difficulty")) {
             return "0";
         }
         return difficulty;

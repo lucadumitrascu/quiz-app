@@ -18,8 +18,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.project.quiz_app.LoadingDialog;
-import com.project.quiz_app.MainActivity;
+import com.project.quiz_app.DialogObject;
 import com.project.quiz_app.R;
 
 import java.util.Objects;
@@ -59,7 +58,8 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
     int score = 0;
 
     // Loading screen
-    LoadingDialog loadingDialog = new LoadingDialog(Quiz.this);
+    DialogObject dialogObject = new DialogObject(Quiz.this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,7 +119,7 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        loadingDialog.startLoadingDialog();
+        dialogObject.startLoadingDialog();
         Request request = retrofit.create(Request.class);
         request.get(
                 quizConfiguration.getNumberOfQuestions(),
@@ -137,7 +137,7 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
                     Intent intent = new Intent(getApplicationContext(), Quiz.class);
                     startActivity(intent);
                 }
-                loadingDialog.dismissDialog();
+                dialogObject.dismissDialog();
             }
 
             @Override
@@ -145,7 +145,6 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
                 questionsTextView.setText(R.string.questions_were_not_generated);
                 Intent intent = new Intent(getApplicationContext(), Quiz.class);
                 startActivity(intent);
-
             }
         });
     }
@@ -170,62 +169,62 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
             switch (randomOrder) {
                 case 0:
                     respA.setText(quiz.results.get(index).getCorrect_answer()
-                            .replace("&quot;","'")
-                            .replace("&#039;","'"));
+                            .replace("&quot;", "'")
+                            .replace("&#039;", "'"));
                     respB.setText(quiz.results.get(index).getIncorrect_answers().get(position[0])
-                            .replace("&quot;","'")
-                            .replace("&#039;","'"));
+                            .replace("&quot;", "'")
+                            .replace("&#039;", "'"));
                     respC.setText(quiz.results.get(index).getIncorrect_answers().get(position[1])
-                            .replace("&quot;","'")
-                            .replace("&#039;","'"));
+                            .replace("&quot;", "'")
+                            .replace("&#039;", "'"));
                     respD.setText(quiz.results.get(index).getIncorrect_answers().get(position[2])
-                            .replace("&quot;","'")
-                            .replace("&#039;","'"));
+                            .replace("&quot;", "'")
+                            .replace("&#039;", "'"));
                     break;
 
                 case 1:
                     respA.setText(quiz.results.get(index).getIncorrect_answers().get(position[0])
-                            .replace("&quot;","'")
-                            .replace("&#039;","'"));
+                            .replace("&quot;", "'")
+                            .replace("&#039;", "'"));
                     respB.setText(quiz.results.get(index).getCorrect_answer()
-                            .replace("&quot;","'")
-                            .replace("&#039;","'"));
+                            .replace("&quot;", "'")
+                            .replace("&#039;", "'"));
                     respC.setText(quiz.results.get(index).getIncorrect_answers().get(position[1])
-                            .replace("&quot;","'")
-                            .replace("&#039;","'"));
+                            .replace("&quot;", "'")
+                            .replace("&#039;", "'"));
                     respD.setText(quiz.results.get(index).getIncorrect_answers().get(position[2])
-                            .replace("&quot;","'")
-                            .replace("&#039;","'"));
+                            .replace("&quot;", "'")
+                            .replace("&#039;", "'"));
                     break;
 
                 case 2:
                     respA.setText(quiz.results.get(index).getIncorrect_answers().get(position[0])
-                            .replace("&quot;","'")
-                            .replace("&#039;","'"));
+                            .replace("&quot;", "'")
+                            .replace("&#039;", "'"));
                     respB.setText(quiz.results.get(index).getIncorrect_answers().get(position[1])
-                            .replace("&quot;","'")
-                            .replace("&#039;","'"));
+                            .replace("&quot;", "'")
+                            .replace("&#039;", "'"));
                     respC.setText(quiz.results.get(index).getCorrect_answer()
-                            .replace("&quot;","'")
-                            .replace("&#039;","'"));
+                            .replace("&quot;", "'")
+                            .replace("&#039;", "'"));
                     respD.setText(quiz.results.get(index).getIncorrect_answers().get(position[2])
-                            .replace("&quot;","'")
-                            .replace("&#039;","'"));
+                            .replace("&quot;", "'")
+                            .replace("&#039;", "'"));
                     break;
 
                 default:
                     respA.setText(quiz.results.get(index).getIncorrect_answers().get(position[0])
-                            .replace("&quot;","'")
-                            .replace("&#039;","'"));
+                            .replace("&quot;", "'")
+                            .replace("&#039;", "'"));
                     respB.setText(quiz.results.get(index).getIncorrect_answers().get(position[1])
-                            .replace("&quot;","'")
-                            .replace("&#039;","'"));
+                            .replace("&quot;", "'")
+                            .replace("&#039;", "'"));
                     respC.setText(quiz.results.get(index).getIncorrect_answers().get(position[2])
-                            .replace("&quot;","'")
-                            .replace("&#039;","'"));
+                            .replace("&quot;", "'")
+                            .replace("&#039;", "'"));
                     respD.setText(quiz.results.get(index).getCorrect_answer()
-                            .replace("&quot;","'")
-                            .replace("&#039;","'"));
+                            .replace("&quot;", "'")
+                            .replace("&#039;", "'"));
                     break;
             }
 
@@ -239,10 +238,14 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
             totalScoreRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    Integer totalScore = dataSnapshot.getValue(Integer.class);
-                    totalScore += score;
-                    totalScoreRef.setValue(totalScore);
+                    Integer totalScoreDB = dataSnapshot.getValue(Integer.class);
+                    totalScoreDB += score;
+
+                    // Modify database information
+                    totalScoreRef.setValue(totalScoreDB);
                     lastScoreRef.setValue(score);
+
+                    dialogObject.seeQuizResultsDialog(score, totalScoreDB);
                 }
 
                 @Override
@@ -250,20 +253,21 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
                     // Error
                 }
             });
-            Intent intent = new Intent(getApplicationContext(), QuizMenu.class);
-            startActivity(intent);
-            questionIndex++;
+            respA.setVisibility(View.GONE);
+            respB.setVisibility(View.GONE);
+            respC.setVisibility(View.GONE);
+            respD.setVisibility(View.GONE);
+            nextButton.setVisibility(View.GONE);
+            questionsTextView.setVisibility(View.GONE);
         }
     }
-
 
     // Generate random order to questions
     int[] getRandomIndexVector() {
         int[] indexVector = new int[]{5, 5, 5};
         Random rand = new Random();
-        int randomValue = 0;
+        int randomValue;
         indexVector[0] = (rand.nextInt((3 - 1) + 1) + 1) - 1;
-        int currentElem = 1;
 
         for (int i = 1; i < 3; i++) {
             do {

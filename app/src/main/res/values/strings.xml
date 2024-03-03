@@ -33,8 +33,11 @@
     <string name="run_quiz_with_options_above">Run quiz with options above</string>
     <string name="generate_your_quiz">Generate your quiz:</string>
     <string name="quizapp">QuizApp</string>
-    <string name="score_for_last_quiz">Score for last quiz:</string>
+    <string name="total_score">Total score: </string>
+    <string name="score_for_last_quiz">Score for last quiz: </string>
     <string name="questions_were_not_generated">Questions were not generated…</string>
     <string name="home">Home</string>
-    <string name="loading">Loading...</string>
+    <string name="loading">Loading…</string>
+    <string name="ok">OK</string>
+
 </resources>
