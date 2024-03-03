@@ -1,4 +1,4 @@
-package com.project.quiz_app;
+package com.project.quiz_app.authentication;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,13 +14,14 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.project.quiz_app.MainActivity;
+import com.project.quiz_app.R;
 
 public class Login extends AppCompatActivity {
 
     FirebaseAuth mAuth;
     TextInputEditText emailInput, passwordInput;
     Button loginButton;
-    ProgressBar progressBar;
     Button goToRegister;
 
     @Override
@@ -44,7 +45,6 @@ public class Login extends AppCompatActivity {
         emailInput = findViewById(R.id.email_login);
         passwordInput = findViewById(R.id.password_login);
         loginButton = findViewById(R.id.login_button);
-        progressBar = findViewById(R.id.progressBar);
         goToRegister = findViewById(R.id.go_to_register);
         goToRegister.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), Register.class);
@@ -70,7 +70,6 @@ public class Login extends AppCompatActivity {
 
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(task -> {
-                        progressBar.setVisibility(View.GONE);
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);

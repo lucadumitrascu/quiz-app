@@ -1,4 +1,4 @@
-package com.project.quiz_app;
+package com.project.quiz_app.quiz;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,8 +18,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.project.quiz_app.LoadingDialog;
+import com.project.quiz_app.MainActivity;
+import com.project.quiz_app.R;
 
-import java.io.Serializable;
 import java.util.Objects;
 import java.util.Random;
 
@@ -56,6 +58,8 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
     String selectedAnswer = "null";
     int score = 0;
 
+    // Loading screen
+    LoadingDialog loadingDialog = new LoadingDialog(Quiz.this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,6 +119,7 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
+        loadingDialog.startLoadingDialog();
         Request request = retrofit.create(Request.class);
         request.get(
                 quizConfiguration.getNumberOfQuestions(),
@@ -132,6 +137,7 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
                     Intent intent = new Intent(getApplicationContext(), Quiz.class);
                     startActivity(intent);
                 }
+                loadingDialog.dismissDialog();
             }
 
             @Override
@@ -157,38 +163,69 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
             question = question.replace("&amp;", "&");
             question = question.replace("&eacute;", "e");
             questionsTextView.setText(question);
-
             int[] position = getRandomIndexVector();
             Random rand = new Random();
             int randomOrder = (rand.nextInt((4 - 1) + 1) + 1) - 1;
 
             switch (randomOrder) {
                 case 0:
-                    respA.setText(quiz.results.get(index).getCorrect_answer());
-                    respB.setText(quiz.results.get(index).getIncorrect_answers().get(position[0]));
-                    respC.setText(quiz.results.get(index).getIncorrect_answers().get(position[1]));
-                    respD.setText(quiz.results.get(index).getIncorrect_answers().get(position[2]));
+                    respA.setText(quiz.results.get(index).getCorrect_answer()
+                            .replace("&quot;","'")
+                            .replace("&#039;","'"));
+                    respB.setText(quiz.results.get(index).getIncorrect_answers().get(position[0])
+                            .replace("&quot;","'")
+                            .replace("&#039;","'"));
+                    respC.setText(quiz.results.get(index).getIncorrect_answers().get(position[1])
+                            .replace("&quot;","'")
+                            .replace("&#039;","'"));
+                    respD.setText(quiz.results.get(index).getIncorrect_answers().get(position[2])
+                            .replace("&quot;","'")
+                            .replace("&#039;","'"));
                     break;
 
                 case 1:
-                    respA.setText(quiz.results.get(index).getIncorrect_answers().get(position[0]));
-                    respB.setText(quiz.results.get(index).getCorrect_answer());
-                    respC.setText(quiz.results.get(index).getIncorrect_answers().get(position[1]));
-                    respD.setText(quiz.results.get(index).getIncorrect_answers().get(position[2]));
+                    respA.setText(quiz.results.get(index).getIncorrect_answers().get(position[0])
+                            .replace("&quot;","'")
+                            .replace("&#039;","'"));
+                    respB.setText(quiz.results.get(index).getCorrect_answer()
+                            .replace("&quot;","'")
+                            .replace("&#039;","'"));
+                    respC.setText(quiz.results.get(index).getIncorrect_answers().get(position[1])
+                            .replace("&quot;","'")
+                            .replace("&#039;","'"));
+                    respD.setText(quiz.results.get(index).getIncorrect_answers().get(position[2])
+                            .replace("&quot;","'")
+                            .replace("&#039;","'"));
                     break;
 
                 case 2:
-                    respA.setText(quiz.results.get(index).getIncorrect_answers().get(position[0]));
-                    respB.setText(quiz.results.get(index).getIncorrect_answers().get(position[1]));
-                    respC.setText(quiz.results.get(index).getCorrect_answer());
-                    respD.setText(quiz.results.get(index).getIncorrect_answers().get(position[2]));
+                    respA.setText(quiz.results.get(index).getIncorrect_answers().get(position[0])
+                            .replace("&quot;","'")
+                            .replace("&#039;","'"));
+                    respB.setText(quiz.results.get(index).getIncorrect_answers().get(position[1])
+                            .replace("&quot;","'")
+                            .replace("&#039;","'"));
+                    respC.setText(quiz.results.get(index).getCorrect_answer()
+                            .replace("&quot;","'")
+                            .replace("&#039;","'"));
+                    respD.setText(quiz.results.get(index).getIncorrect_answers().get(position[2])
+                            .replace("&quot;","'")
+                            .replace("&#039;","'"));
                     break;
 
                 default:
-                    respA.setText(quiz.results.get(index).getIncorrect_answers().get(position[0]));
-                    respB.setText(quiz.results.get(index).getIncorrect_answers().get(position[1]));
-                    respC.setText(quiz.results.get(index).getIncorrect_answers().get(position[2]));
-                    respD.setText(quiz.results.get(index).getCorrect_answer());
+                    respA.setText(quiz.results.get(index).getIncorrect_answers().get(position[0])
+                            .replace("&quot;","'")
+                            .replace("&#039;","'"));
+                    respB.setText(quiz.results.get(index).getIncorrect_answers().get(position[1])
+                            .replace("&quot;","'")
+                            .replace("&#039;","'"));
+                    respC.setText(quiz.results.get(index).getIncorrect_answers().get(position[2])
+                            .replace("&quot;","'")
+                            .replace("&#039;","'"));
+                    respD.setText(quiz.results.get(index).getCorrect_answer()
+                            .replace("&quot;","'")
+                            .replace("&#039;","'"));
                     break;
             }
 

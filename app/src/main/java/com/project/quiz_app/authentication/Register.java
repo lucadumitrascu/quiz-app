@@ -1,4 +1,4 @@
-package com.project.quiz_app;
+package com.project.quiz_app.authentication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +15,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.project.quiz_app.MainActivity;
+import com.project.quiz_app.R;
 
 public class Register extends AppCompatActivity {
 
@@ -22,7 +24,6 @@ public class Register extends AppCompatActivity {
     FirebaseAuth mAuth;
     TextInputEditText emailInput, passwordInput;
     Button registerButton;
-    ProgressBar progressBar;
     Button goToLogin;
 
 
@@ -47,7 +48,6 @@ public class Register extends AppCompatActivity {
         emailInput = findViewById(R.id.email_register);
         passwordInput = findViewById(R.id.password_register);
         registerButton = findViewById(R.id.register_button);
-        progressBar = findViewById(R.id.progressBar);
         goToLogin = findViewById(R.id.login_in_register);
         goToLogin.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), Login.class);
@@ -71,7 +71,6 @@ public class Register extends AppCompatActivity {
 
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(task -> {
-                        progressBar.setVisibility(View.GONE);
                         if (task.isSuccessful()) {
                             Toast.makeText(Register.this, "Account created.",
                                     Toast.LENGTH_SHORT).show();

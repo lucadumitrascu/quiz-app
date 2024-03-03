@@ -1,4 +1,4 @@
-package com.project.quiz_app;
+package com.project.quiz_app.authentication;
 
 public class User {
 

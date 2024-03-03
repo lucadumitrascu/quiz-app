@@ -19,6 +19,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.project.quiz_app.authentication.Login;
+import com.project.quiz_app.authentication.SetName;
+import com.project.quiz_app.authentication.User;
+import com.project.quiz_app.quiz.QuizMenu;
 
 import java.util.Objects;
 
@@ -29,10 +33,13 @@ public class MainActivity extends AppCompatActivity {
     Button logoutButton, generateQuizButton;
     FirebaseUser user;
 
+    LoadingDialog loadingDialog = new LoadingDialog(MainActivity.this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        loadingDialog.startLoadingDialog();
 
         auth = FirebaseAuth.getInstance();
         logoutButton = findViewById(R.id.logout);
@@ -61,15 +68,17 @@ public class MainActivity extends AppCompatActivity {
                             String name = "Hello, ";
                             name += userFromDB.getName();
                             displayName.setText(name);
+
                         }
+                        loadingDialog.dismissDialog();
                     }
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
                     Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
                 }
             });
+
         }
 
         logoutButton.setOnClickListener(v -> {

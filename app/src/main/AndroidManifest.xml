@@ -15,23 +15,23 @@
         android:theme="@style/Theme.Material3.Light.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".QuizMenu"
+            android:name=".quiz.QuizMenu"
             android:exported="false"
             android:theme="@style/Theme.Material3.Light.NoActionBar"/>
         <activity
-            android:name=".Quiz"
+            android:name=".quiz.Quiz"
             android:exported="false"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
-            android:name=".SetName"
+            android:name=".authentication.SetName"
             android:exported="false"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
-            android:name=".Register"
+            android:name=".authentication.Register"
             android:exported="false"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
-            android:name=".Login"
+            android:name=".authentication.Login"
             android:exported="true"
             android:theme="@style/Theme.Material3.Light.NoActionBar">
             <intent-filter>

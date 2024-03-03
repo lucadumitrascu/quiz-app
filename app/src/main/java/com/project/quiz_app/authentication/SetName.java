@@ -1,4 +1,4 @@
-package com.project.quiz_app;
+package com.project.quiz_app.authentication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.project.quiz_app.MainActivity;
+import com.project.quiz_app.R;
 
 public class SetName extends AppCompatActivity {
 
