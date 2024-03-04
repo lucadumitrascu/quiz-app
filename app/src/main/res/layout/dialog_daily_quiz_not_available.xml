@@ -4,28 +4,25 @@
     android:gravity="center"
     android:orientation="vertical">
 
-
     <TextView
-        android:id="@+id/textview_show_score"
+        android:id="@+id/daily_quiz_not_available"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15sp"
-        android:text="@string/score_for_last_quiz"
+        android:text="@string/daily_quiz_not_available"
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textview_show_total_score"
+        android:id="@+id/daily_quiz_available_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15sp"
-        android:text="@string/total_score"
+        android:text="@string/available_date"
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:textStyle="bold" />
-
-
     <Button
         android:id="@+id/ok_quiz_results"
         android:layout_width="100sp"

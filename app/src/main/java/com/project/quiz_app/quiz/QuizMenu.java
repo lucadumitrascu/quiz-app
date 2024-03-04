@@ -36,7 +36,6 @@ import java.util.Locale;
 public class QuizMenu extends AppCompatActivity {
 
 
-
     // Buttons
     Button generateRandomQuizButton;
     Button generateQuizWithConfigurationButton;

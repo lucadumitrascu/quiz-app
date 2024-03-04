@@ -42,6 +42,31 @@ import retrofit2.http.GET;
 
 public class DailyQuiz extends AppCompatActivity implements View.OnClickListener {
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        countDownTimer.cancel();
+        this.millisUntilFinished = Long.parseLong(countdownNumberTextView.getText().toString()) * 1000;
+    }
+
+    // onResume is called when the activity is created,
+    // to prevent unexpected issues, I created a variable
+    // to check if the activity was created
+    boolean dailyQuizActivityCreated = false;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (dailyQuizActivityCreated) {
+            countdownNumberTextView.setText(String.valueOf((int) this.millisUntilFinished / 1000));
+            createCountDownTimer(this.millisUntilFinished);
+            countDownTimer.start();
+        } else {
+            createCountDownTimer(16000);
+            dailyQuizActivityCreated = true;
+        }
+    }
+
     interface Request {
         @GET("https://opentdb.com/api.php?amount=10&type=multiple")
         Call<QuizObject> get();
@@ -60,7 +85,6 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
     int questionIndex = 0;
     String selectedAnswer = "null";
     int score = 0;
-
     int totalQuestions = 10;
 
     // Loading screen
@@ -70,10 +94,11 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
     Calendar dateAndTimeNow;
     Calendar dateAndTimeAfter24h;
 
-    // Counter
-    TextView countdownTextView;
+    // CountDown variables
+    TextView countdownTextTextView;
+    TextView countdownNumberTextView;
     CountDownTimer countDownTimer;
-
+    long millisUntilFinished = 16000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +108,8 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
         questionsLeftTextView = findViewById(R.id.questions_left);
         questionsLeftTextView.append(" " + totalQuestions);
 
-        countdownTextView = findViewById(R.id.countdown);
+        countdownTextTextView = findViewById(R.id.countdown_text);
+        countdownNumberTextView = findViewById(R.id.countdown_number);
         questionsTextView = findViewById(R.id.question);
         respA = findViewById(R.id.A_response);
         respB = findViewById(R.id.B_response);
@@ -92,7 +118,8 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
         nextButton = findViewById(R.id.next_button);
 
         questionsLeftTextView.setVisibility(View.GONE);
-        countdownTextView.setVisibility(View.GONE);
+        countdownTextTextView.setVisibility(View.GONE);
+        countdownNumberTextView.setVisibility(View.GONE);
         questionsTextView.setVisibility(View.GONE);
         respA.setVisibility(View.GONE);
         respB.setVisibility(View.GONE);
@@ -108,21 +135,6 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
         respD.setOnClickListener(this);
         nextButton.setOnClickListener(this);
 
-        countDownTimer = new CountDownTimer(16000, 1000) {
-            String timeLeft;
-
-            @Override
-            public void onTick(long millisUntilFinished) {
-                timeLeft = "Time left: " + millisUntilFinished / 1000;
-                countdownTextView.setText(timeLeft);
-            }
-
-            @Override
-            public void onFinish() {
-                timeUp();
-            }
-        };
-
         OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
@@ -130,6 +142,32 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
             }
         };
         getOnBackPressedDispatcher().addCallback(this, onBackPressedCallback);
+    }
+
+
+    // CountDownTimer functions:
+    public void createCountDownTimer(long millisUntilFinished) {
+        this.countDownTimer = new CountDownTimer(millisUntilFinished, 1000) {
+            String timeLeft;
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timeLeft = String.valueOf(millisUntilFinished / 1000);
+                if (millisUntilFinished / 1000 == 10) {
+                    countdownNumberTextView.setTextColor(Color.YELLOW);
+                }
+
+                if (millisUntilFinished / 1000 == 5) {
+                    countdownNumberTextView.setTextColor(Color.RED);
+                }
+                countdownNumberTextView.setText(timeLeft);
+            }
+
+            @Override
+            public void onFinish() {
+                timeUp();
+            }
+        };
     }
 
     public void timeUp() {
@@ -140,13 +178,19 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
             respB.setBackgroundColor(Color.WHITE);
             respC.setBackgroundColor(Color.WHITE);
             respD.setBackgroundColor(Color.WHITE);
+            countdownNumberTextView.setTextColor(Color.WHITE);
+
             questionIndex++;
             setQuestionsLeftTextView();
             setValuesToQuiz(quiz, questionIndex);
             selectedAnswer = "null";
+
+            countDownTimer.cancel();
+            createCountDownTimer(16000);
             countDownTimer.start();
         }
     }
+
 
     private void checkDailyQuiz() {
 
@@ -181,7 +225,8 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
                     dialogObject.startLoadingDialog();
 
                     questionsLeftTextView.setVisibility(View.VISIBLE);
-                    countdownTextView.setVisibility(View.VISIBLE);
+                    countdownTextTextView.setVisibility(View.VISIBLE);
+                    countdownNumberTextView.setVisibility(View.VISIBLE);
                     questionsTextView.setVisibility(View.VISIBLE);
                     respA.setVisibility(View.VISIBLE);
                     respB.setVisibility(View.VISIBLE);
@@ -220,6 +265,11 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
                     setQuestionsLeftTextView();
                     setValuesToQuiz(quiz, questionIndex);
                     selectedAnswer = "null";
+
+                    countdownNumberTextView.setTextColor(Color.WHITE);
+
+                    countDownTimer.cancel();
+                    createCountDownTimer(16000);
                     countDownTimer.start();
                 } else {
                     Toast.makeText(DailyQuiz.this, "You have to select an answer!", Toast.LENGTH_SHORT).show();
@@ -387,6 +437,7 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
                     userFromDB.setDailyTotalScore(userFromDB.getDailyTotalScore() + score);
 
                     mRef.setValue(userFromDB);
+                    countDownTimer.onFinish();
                     dialogObject.seeDailyQuizResultsDialog(score, userFromDB.getDailyTotalScore());
                 }
 
@@ -396,7 +447,8 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
                 }
             });
             questionsLeftTextView.setVisibility(View.GONE);
-            countdownTextView.setVisibility(View.GONE);
+            countdownTextTextView.setVisibility(View.GONE);
+            countdownNumberTextView.setVisibility(View.GONE);
             questionsTextView.setVisibility(View.GONE);
             respA.setVisibility(View.GONE);
             respB.setVisibility(View.GONE);

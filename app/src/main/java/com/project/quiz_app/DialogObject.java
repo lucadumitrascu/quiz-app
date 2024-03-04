@@ -11,6 +11,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.project.quiz_app.quiz.DailyQuiz;
 import com.project.quiz_app.quiz.QuizMenu;
 
@@ -29,7 +38,7 @@ public class DialogObject {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
         activity.getLayoutInflater();
-        builder.setView(R.layout.progress_dialog);
+        builder.setView(R.layout.dialog_loading_screen);
         builder.setCancelable(false);
 
         this.dialog = builder.create();
@@ -41,7 +50,7 @@ public class DialogObject {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
         LayoutInflater inflater = activity.getLayoutInflater();
-        View view = inflater.inflate(R.layout.quiz_results_dialog, null);
+        View view = inflater.inflate(R.layout.dialog_quiz_results, null);
         builder.setView(view);
         builder.setCancelable(false);
 
@@ -73,7 +82,7 @@ public class DialogObject {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
         LayoutInflater inflater = activity.getLayoutInflater();
-        View view = inflater.inflate(R.layout.finish_quiz_dialog, null);
+        View view = inflater.inflate(R.layout.dialog_close_quiz, null);
         builder.setView(view);
         builder.setCancelable(false);
 
@@ -96,13 +105,14 @@ public class DialogObject {
         noButton.setOnClickListener(v -> dismissDialog());
     }
 
-
+    // dailyQuizDialog will be displayed when the user enters the QuizMenu and daily quiz is available
+    // The user can select Proceed to start the daily quiz, or Later
     public void dailyQuizDialog() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
         LayoutInflater inflater = activity.getLayoutInflater();
-        View view = inflater.inflate(R.layout.daily_quiz_dialog, null);
+        View view = inflater.inflate(R.layout.dialog_daily_quiz_available, null);
         builder.setView(view);
         builder.setCancelable(false);
 
@@ -127,7 +137,7 @@ public class DialogObject {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
         LayoutInflater inflater = activity.getLayoutInflater();
-        View view = inflater.inflate(R.layout.quiz_results_dialog, null);
+        View view = inflater.inflate(R.layout.dialog_quiz_results, null);
         builder.setView(view);
         builder.setCancelable(false);
 
@@ -144,7 +154,7 @@ public class DialogObject {
         lastQuizScoreTextView.setText(stringToSetToTextView);
 
 
-        stringToSetToTextView = "Daily quiz total score: "+ dailyQuizTotalScore;
+        stringToSetToTextView = "Daily quiz total score: " + dailyQuizTotalScore;
         totalScoreTextView.setText(stringToSetToTextView);
 
         okButton.setOnClickListener(v -> {
@@ -159,7 +169,7 @@ public class DialogObject {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
         LayoutInflater inflater = activity.getLayoutInflater();
-        View view = inflater.inflate(R.layout.daily_quiz_not_available_dialog, null);
+        View view = inflater.inflate(R.layout.dialog_daily_quiz_not_available, null);
         builder.setView(view);
         builder.setCancelable(false);
 
@@ -167,8 +177,30 @@ public class DialogObject {
         Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
 
-        Button okButton = view.findViewById(R.id.ok_quiz_results);
+        TextView availableDateTextView = view.findViewById(R.id.daily_quiz_available_date);
 
+        // Fetch the available date for daily quiz
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        assert user != null;
+
+        DatabaseReference date = database.getReference()
+                .child("Users").child(user.getUid()).child("dailyQuizAvailableDate");
+
+        date.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+               String availableDate = "Available date: ";
+                availableDate += dataSnapshot.getValue(String.class);
+                availableDateTextView.setText(availableDate);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Error
+            }
+        });
+
+        Button okButton = view.findViewById(R.id.ok_quiz_results);
         okButton.setOnClickListener(v -> {
             Intent intent = new Intent(activity, MainActivity.class);
             ActivityOptions options = ActivityOptions.makeCustomAnimation(activity,
@@ -182,7 +214,7 @@ public class DialogObject {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
         LayoutInflater inflater = activity.getLayoutInflater();
-        View view = inflater.inflate(R.layout.exit_quiz_app_dialog, null);
+        View view = inflater.inflate(R.layout.dialog_exit_quiz_app, null);
         builder.setView(view);
         builder.setCancelable(false);
 

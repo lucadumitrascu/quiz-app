@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
             });
 
         }
-        dailyQuizButton.setOnClickListener(v->{
+        dailyQuizButton.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), DailyQuiz.class);
             startActivity(intent);
             finish();

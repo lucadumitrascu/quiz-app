@@ -84,7 +84,7 @@ public class PracticeQuiz extends AppCompatActivity implements View.OnClickListe
         if (quizConfiguration != null) {
             getQuestions();
         } else {
-            Toast.makeText(getApplicationContext(),"Something went wrong...",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Something went wrong...", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getApplicationContext(), QuizMenu.class);
             ActivityOptions options = ActivityOptions.makeCustomAnimation(getApplicationContext(),
                     R.anim.slide_in_left, android.R.anim.slide_out_right);
