@@ -1,0 +1,46 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/close_daily_quiz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15sp"
+        android:text="@string/close_daily_quiz"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="100sp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/yes_close_daily_quiz_button"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#5AA8AF"
+            android:text="@string/yes"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/no_close_daily_quiz_button"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10sp"
+            android:backgroundTint="#5AA8AF"
+            android:text="@string/no"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

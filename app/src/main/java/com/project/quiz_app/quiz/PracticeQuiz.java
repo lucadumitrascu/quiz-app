@@ -101,7 +101,7 @@ public class PracticeQuiz extends AppCompatActivity implements View.OnClickListe
         OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                dialogObject.finishQuizDialog();
+                dialogObject.closeQuizDialog();
             }
         };
         getOnBackPressedDispatcher().addCallback(this, onBackPressedCallback);

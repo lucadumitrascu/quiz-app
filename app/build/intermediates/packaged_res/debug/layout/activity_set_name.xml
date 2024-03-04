@@ -7,7 +7,7 @@
     android:background="@drawable/gradient_background"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".SetName">
+    tools:context=".authentication.SetName">
 
     <TextView
         android:layout_width="match_parent"
@@ -46,6 +46,5 @@
         android:text="@string/set_name"
         android:textAllCaps="false"
         android:textColor="@color/white" />
-
 
 </LinearLayout>

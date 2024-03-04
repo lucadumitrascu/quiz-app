@@ -7,7 +7,7 @@
     android:background="@drawable/gradient_background"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".Login">
+    tools:context=".authentication.Login">
 
     <TextView
         android:layout_width="match_parent"
@@ -36,7 +36,6 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="350sp"
@@ -60,12 +59,6 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
-
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
@@ -83,7 +76,6 @@
             android:textAllCaps="false"
             android:textColor="@color/white" />
 
-
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/login_in_register"
             android:layout_width="wrap_content"
@@ -96,7 +88,7 @@
             android:text="@string/back_to_login"
             android:textAllCaps="false"
             android:textColor="@color/white" />
-    </LinearLayout>
 
+    </LinearLayout>
 
 </LinearLayout>

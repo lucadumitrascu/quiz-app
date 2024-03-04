@@ -1,7 +1,23 @@
 [
     {
+        "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\anim_slide_in_left.xml.flat",
+        "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\anim\\slide_in_left.xml"
+    },
+    {
+        "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\layout_finish_quiz_dialog.xml.flat",
+        "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\layout\\finish_quiz_dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\layout_exit_quiz_app_dialog.xml.flat",
+        "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\layout\\exit_quiz_app_dialog.xml"
+    },
+    {
         "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\mipmap-hdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
         "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
@@ -12,12 +28,12 @@
         "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\drawable\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\mipmap-hdpi\\ic_launcher.webp"
-    },
-    {
         "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\mipmap-mdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\layout_activity_practice_quiz.xml.flat",
+        "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\layout\\activity_practice_quiz.xml"
     },
     {
         "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
@@ -32,6 +48,10 @@
         "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
+        "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\layout_daily_quiz_not_available_dialog.xml.flat",
+        "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\layout\\daily_quiz_not_available_dialog.xml"
+    },
+    {
         "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\layout_activity_set_name.xml.flat",
         "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\layout\\activity_set_name.xml"
     },
@@ -44,12 +64,48 @@
         "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\mipmap-xhdpi\\ic_launcher_round.webp"
     },
     {
+        "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\layout_dialog_exit_daily_quiz.xml.flat",
+        "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\layout\\dialog_exit_daily_quiz.xml"
+    },
+    {
+        "merged": "com.project.quiz_app-merged_res-36:/layout_dialog_info_daily_quiz.xml.flat",
+        "source": "com.project.quiz_app-main-38:/layout/dialog_info_daily_quiz.xml"
+    },
+    {
+        "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\layout_daily_quiz_dialog.xml.flat",
+        "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\layout\\daily_quiz_dialog.xml"
+    },
+    {
         "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\layout_activity_main.xml.flat",
         "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\layout\\activity_main.xml"
     },
     {
+        "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\layout_dialog_close_quiz.xml.flat",
+        "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\layout\\dialog_close_quiz.xml"
+    },
+    {
         "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\xml_backup_rules.xml.flat",
         "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\drawable_main_button.xml.flat",
+        "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\drawable\\main_button.xml"
+    },
+    {
+        "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\layout_dialog_daily_quiz_not_available.xml.flat",
+        "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\layout\\dialog_daily_quiz_not_available.xml"
+    },
+    {
+        "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\anim_slide_out_right.xml.flat",
+        "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\anim\\slide_out_right.xml"
+    },
+    {
+        "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\layout_dialog_info_daily_quiz.xml.flat",
+        "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\layout\\dialog_info_daily_quiz.xml"
+    },
+    {
+        "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\layout_dialog_exit_quiz_app.xml.flat",
+        "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\layout\\dialog_exit_quiz_app.xml"
     },
     {
         "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\color_text_input_layout_stroke_color.xml.flat",
@@ -60,8 +116,24 @@
         "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\drawable\\ic_launcher_background.xml"
     },
     {
+        "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\layout_list_item.xml.flat",
+        "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\layout\\list_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\layout_dialog_daily_quiz_available.xml.flat",
+        "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\layout\\dialog_daily_quiz_available.xml"
+    },
+    {
         "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
         "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\layout_progress_dialog.xml.flat",
+        "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\layout\\progress_dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\layout_quiz_results.xml.flat",
+        "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\layout\\quiz_results.xml"
     },
     {
         "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\xml_data_extraction_rules.xml.flat",
@@ -80,16 +152,36 @@
         "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
+        "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\color_text_input_layout_quiz_options.xml.flat",
+        "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\color\\text_input_layout_quiz_options.xml"
+    },
+    {
+        "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\layout_activity_quiz_menu.xml.flat",
+        "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\layout\\activity_quiz_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\layout_dialog_quiz_results.xml.flat",
+        "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\layout\\dialog_quiz_results.xml"
+    },
+    {
         "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\drawable_button_login_register.xml.flat",
         "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\drawable\\button_login_register.xml"
+    },
+    {
+        "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\layout_dialog_loading_screen.xml.flat",
+        "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\layout\\dialog_loading_screen.xml"
     },
     {
         "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\mipmap-xhdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\mipmap-xhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.project.quiz_app-merged_res-36:/layout_activity_set_name.xml.flat",
-        "source": "com.project.quiz_app-main-38:/layout/activity_set_name.xml"
+        "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\layout_quiz_results_dialog.xml.flat",
+        "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\layout\\quiz_results_dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\layout_activity_daily_quiz.xml.flat",
+        "source": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-main-38:\\layout\\activity_daily_quiz.xml"
     },
     {
         "merged": "C:\\Users\\dumit\\.gradle\\daemon\\8.2\\com.project.quiz_app-merged_res-36:\\layout_activity_register.xml.flat",

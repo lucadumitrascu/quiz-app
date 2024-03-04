@@ -29,21 +29,30 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Material3.Light" >
+        android:testOnly="true"
+        android:theme="@style/Theme.Material3.Light.NoActionBar" >
         <activity
-            android:name="com.project.quiz_app.Quiz"
+            android:name="com.project.quiz_app.quiz.DailyQuiz"
             android:exported="false"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
-            android:name="com.project.quiz_app.SetName"
+            android:name="com.project.quiz_app.quiz.QuizMenu"
             android:exported="false"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
-            android:name="com.project.quiz_app.Register"
+            android:name="com.project.quiz_app.quiz.PracticeQuiz"
             android:exported="false"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
-            android:name="com.project.quiz_app.Login"
+            android:name="com.project.quiz_app.authentication.SetName"
+            android:exported="false"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
+        <activity
+            android:name="com.project.quiz_app.authentication.Register"
+            android:exported="false"
+            android:theme="@style/Theme.Material3.Light.NoActionBar" />
+        <activity
+            android:name="com.project.quiz_app.authentication.Login"
             android:exported="true"
             android:theme="@style/Theme.Material3.Light.NoActionBar" >
             <intent-filter>

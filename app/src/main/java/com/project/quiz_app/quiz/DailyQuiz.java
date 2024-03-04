@@ -127,7 +127,11 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
         respD.setVisibility(View.GONE);
         nextButton.setVisibility(View.GONE);
 
-        checkDailyQuiz();
+        dialogObject.dailyQuizInfoDialog().thenAccept(okPressed -> {
+            if (okPressed) {
+                checkDailyQuiz();
+            }
+        });
 
         respA.setOnClickListener(this);
         respB.setOnClickListener(this);
@@ -138,7 +142,7 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
         OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                dialogObject.finishQuizDialog();
+                dialogObject.closeDailyQuizDialog();
             }
         };
         getOnBackPressedDispatcher().addCallback(this, onBackPressedCallback);
@@ -199,10 +203,10 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         assert user != null;
 
-        DatabaseReference date = database.getReference()
+        DatabaseReference mRef = database.getReference()
                 .child("Users").child(user.getUid()).child("dailyQuizAvailableDate");
 
-        date.addListenerForSingleValueEvent(new ValueEventListener() {
+        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String dateString = dataSnapshot.getValue(String.class);

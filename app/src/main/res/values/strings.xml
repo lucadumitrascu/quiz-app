@@ -39,6 +39,11 @@
     <string name="loading">Loading…</string>
     <string name="ok">OK</string>
     <string name="close_quiz">Close quiz?</string>
+    <string name="close_daily_quiz">Close daily quiz?</string>
+    <string name="info_daily_quiz_title">Info Daily Quiz</string>
+    <string name="info_daily_quiz_1">Daily quiz is a game mode that allows users to compete on a leaderboard. This quiz is available every 24 hours after answering all questions,</string>
+    <string name="info_daily_quiz_2">15 seconds per question.</string>
+    <string name="info_daily_quiz_3">If you exit the quiz, the score will be set to 0 and the next available time for daily quiz will be 24 hours later,</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="daily_quiz">Daily quiz</string>
