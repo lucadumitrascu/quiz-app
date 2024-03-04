@@ -30,7 +30,7 @@ public class DialogObject {
 
         activity.getLayoutInflater();
         builder.setView(R.layout.progress_dialog);
-        builder.setCancelable(true);
+        builder.setCancelable(false);
 
         this.dialog = builder.create();
         Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

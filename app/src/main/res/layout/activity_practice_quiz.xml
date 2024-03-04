@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
-    tools:context=".Quiz"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".quiz.PracticeQuiz">
 
+    <TextView
+        android:id="@+id/questions_left"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/questions_left"
+        android:textAlignment="center"
+        android:textColor="@color/aqua"
+        android:textSize="22sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/question"
@@ -76,6 +86,7 @@
             android:backgroundTint="#E8E8E8"
             android:text="@string/d"
             android:textColor="@color/black" />
+
     </LinearLayout>
 
     <Button
@@ -84,7 +95,6 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#5AA8AF"
         android:text="@string/next_question"
-        android:textColor="@color/white"
-        />
+        android:textColor="@color/white" />
 
 </LinearLayout>

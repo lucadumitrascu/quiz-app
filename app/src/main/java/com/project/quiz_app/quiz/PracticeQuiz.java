@@ -4,6 +4,7 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -34,7 +35,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 
-public class Quiz extends AppCompatActivity implements View.OnClickListener {
+public class PracticeQuiz extends AppCompatActivity implements View.OnClickListener {
 
     interface Request {
         @GET("https://opentdb.com/api.php?type=multiple")
@@ -50,6 +51,7 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
 
     // Visual variables
     TextView questionsTextView;
+    TextView questionsLeftTextView;
     Button respA, respB, respC, respD;
     Button nextButton;
 
@@ -57,15 +59,19 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
     int questionIndex = 0;
     String selectedAnswer = "null";
     int score = 0;
+    int totalQuestions = 0;
 
     // Loading screen
-    DialogObject dialogObject = new DialogObject(Quiz.this);
+    DialogObject dialogObject = new DialogObject(PracticeQuiz.this);
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quiz);
+        setContentView(R.layout.activity_practice_quiz);
+
+        questionsLeftTextView = findViewById(R.id.questions_left);
+
 
         questionsTextView = findViewById(R.id.question);
         respA = findViewById(R.id.A_response);
@@ -75,7 +81,16 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
         nextButton = findViewById(R.id.next_button);
 
         quizConfiguration = (QuizConfiguration) getIntent().getSerializableExtra("config");
-        getQuestions();
+        if (quizConfiguration != null) {
+            getQuestions();
+        } else {
+            Toast.makeText(getApplicationContext(),"Something went wrong...",Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getApplicationContext(), QuizMenu.class);
+            ActivityOptions options = ActivityOptions.makeCustomAnimation(getApplicationContext(),
+                    R.anim.slide_in_left, android.R.anim.slide_out_right);
+            startActivity(intent, options.toBundle());
+            finish();
+        }
 
         respA.setOnClickListener(this);
         respB.setOnClickListener(this);
@@ -109,10 +124,11 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
                 }
                 if (!Objects.equals(selectedAnswer, "null")) {
                     questionIndex++;
+                    setQuestionsLeftTextView();
                     setValuesToQuiz(quiz, questionIndex);
                     selectedAnswer = "null";
                 } else {
-                    Toast.makeText(Quiz.this, "You have to select an answer!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PracticeQuiz.this, "You have to select an answer!", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -120,6 +136,11 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
             selectedAnswer = clickedButton.getText().toString();
             clickedButton.setBackgroundColor(Color.CYAN);
         }
+    }
+
+    private void setQuestionsLeftTextView() {
+        String helper = "Questions left: " + --totalQuestions;
+        questionsLeftTextView.setText(helper);
     }
 
     void getQuestions() {
@@ -140,11 +161,16 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
             public void onResponse(@NonNull Call<QuizObject> call, @NonNull Response<QuizObject> response) {
                 if (response.body() != null && response.body().results != null) {
                     QuizObject quiz = response.body();
+
+                    // append question left to textview
+                    totalQuestions = Integer.parseInt(quizConfiguration.getNumberOfQuestions());
+                    questionsLeftTextView.append(" " + totalQuestions);
+
                     setGlobalVariableQuiz(quiz);
                     setValuesToQuiz(quiz, 0);
                 } else {
                     questionsTextView.setText(R.string.questions_were_not_generated);
-                    Intent intent = new Intent(getApplicationContext(), Quiz.class);
+                    Intent intent = new Intent(getApplicationContext(), PracticeQuiz.class);
                     startActivity(intent);
                 }
                 dialogObject.dismissDialog();
@@ -153,7 +179,7 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onFailure(@NonNull Call<QuizObject> call, @NonNull Throwable t) {
                 questionsTextView.setText(R.string.questions_were_not_generated);
-                Intent intent = new Intent(getApplicationContext(), Quiz.class);
+                Intent intent = new Intent(getApplicationContext(), PracticeQuiz.class);
                 startActivity(intent);
             }
         });
@@ -181,76 +207,76 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
                     respA.setText(quiz.results.get(index).getCorrect_answer()
                             .replace("&quot;", "'")
                             .replace("&#039;", "'")
-                            .replace("&amp;","&"));
+                            .replace("&amp;", "&"));
                     respB.setText(quiz.results.get(index).getIncorrect_answers().get(position[0])
                             .replace("&quot;", "'")
                             .replace("&#039;", "'")
-                            .replace("&amp;","&"));
+                            .replace("&amp;", "&"));
                     respC.setText(quiz.results.get(index).getIncorrect_answers().get(position[1])
                             .replace("&quot;", "'")
                             .replace("&#039;", "'")
-                            .replace("&amp;","&"));
+                            .replace("&amp;", "&"));
                     respD.setText(quiz.results.get(index).getIncorrect_answers().get(position[2])
                             .replace("&quot;", "'")
                             .replace("&#039;", "'")
-                            .replace("&amp;","&"));
+                            .replace("&amp;", "&"));
                     break;
 
                 case 1:
                     respA.setText(quiz.results.get(index).getIncorrect_answers().get(position[0])
                             .replace("&quot;", "'")
                             .replace("&#039;", "'")
-                            .replace("&amp;","&"));
+                            .replace("&amp;", "&"));
                     respB.setText(quiz.results.get(index).getCorrect_answer()
                             .replace("&quot;", "'")
                             .replace("&#039;", "'")
-                            .replace("&amp;","&"));
+                            .replace("&amp;", "&"));
                     respC.setText(quiz.results.get(index).getIncorrect_answers().get(position[1])
                             .replace("&quot;", "'")
                             .replace("&#039;", "'")
-                            .replace("&amp;","&"));
+                            .replace("&amp;", "&"));
                     respD.setText(quiz.results.get(index).getIncorrect_answers().get(position[2])
                             .replace("&quot;", "'")
                             .replace("&#039;", "'")
-                            .replace("&amp;","&"));
+                            .replace("&amp;", "&"));
                     break;
 
                 case 2:
                     respA.setText(quiz.results.get(index).getIncorrect_answers().get(position[0])
                             .replace("&quot;", "'")
                             .replace("&#039;", "'")
-                            .replace("&amp;","&"));
+                            .replace("&amp;", "&"));
                     respB.setText(quiz.results.get(index).getIncorrect_answers().get(position[1])
                             .replace("&quot;", "'")
                             .replace("&#039;", "'")
-                            .replace("&amp;","&"));
+                            .replace("&amp;", "&"));
                     respC.setText(quiz.results.get(index).getCorrect_answer()
                             .replace("&quot;", "'")
                             .replace("&#039;", "'")
-                            .replace("&amp;","&"));
+                            .replace("&amp;", "&"));
                     respD.setText(quiz.results.get(index).getIncorrect_answers().get(position[2])
                             .replace("&quot;", "'")
                             .replace("&#039;", "'")
-                            .replace("&amp;","&"));
+                            .replace("&amp;", "&"));
                     break;
 
                 default:
                     respA.setText(quiz.results.get(index).getIncorrect_answers().get(position[0])
                             .replace("&quot;", "'")
                             .replace("&#039;", "'")
-                            .replace("&amp;","&"));
+                            .replace("&amp;", "&"));
                     respB.setText(quiz.results.get(index).getIncorrect_answers().get(position[1])
                             .replace("&quot;", "'")
                             .replace("&#039;", "'")
-                            .replace("&amp;","&"));
+                            .replace("&amp;", "&"));
                     respC.setText(quiz.results.get(index).getIncorrect_answers().get(position[2])
                             .replace("&quot;", "'")
                             .replace("&#039;", "'")
-                            .replace("&amp;","&"));
+                            .replace("&amp;", "&"));
                     respD.setText(quiz.results.get(index).getCorrect_answer()
                             .replace("&quot;", "'")
                             .replace("&#039;", "'")
-                            .replace("&amp;","&"));
+                            .replace("&amp;", "&"));
                     break;
             }
 
@@ -279,12 +305,13 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
                     // Error
                 }
             });
+            questionsLeftTextView.setVisibility(View.GONE);
+            questionsTextView.setVisibility(View.GONE);
             respA.setVisibility(View.GONE);
             respB.setVisibility(View.GONE);
             respC.setVisibility(View.GONE);
             respD.setVisibility(View.GONE);
             nextButton.setVisibility(View.GONE);
-            questionsTextView.setVisibility(View.GONE);
         }
     }
 

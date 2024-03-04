@@ -8,11 +8,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -31,6 +34,8 @@ import java.util.Date;
 import java.util.Locale;
 
 public class QuizMenu extends AppCompatActivity {
+
+
 
     // Buttons
     Button generateRandomQuizButton;
@@ -57,11 +62,24 @@ public class QuizMenu extends AppCompatActivity {
     // Dialog object
     DialogObject dialogObject = new DialogObject(QuizMenu.this);
 
+    // Generate your quiz textview
+    TextView generateYourQuizTextView;
+
+    // TextInputLayouts
+    TextInputLayout textInputLayoutDifficulty;
+    TextInputLayout textInputLayoutCategory;
+    TextInputLayout textInputLayoutAmount;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_menu);
         checkDailyQuiz();
+
+        generateYourQuizTextView = findViewById(R.id.generate_your_quiz_textview);
+        textInputLayoutDifficulty = findViewById(R.id.text_input_layout_difficulty);
+        textInputLayoutCategory = findViewById(R.id.text_input_layout_category);
+        textInputLayoutAmount = findViewById(R.id.text_input_layout_amount);
 
         autoCompleteTextViewDifficulty = findViewById(R.id.auto_complete_textview_difficulty);
         adapterItems = new ArrayAdapter<>(this, R.layout.list_item, difficultyItem);
@@ -92,7 +110,17 @@ public class QuizMenu extends AppCompatActivity {
         generateQuizWithConfigurationButton = findViewById(R.id.generate_quiz_button);
         generateQuizWithConfigurationButton.setOnClickListener(v -> {
 
-            Intent intent = new Intent(getApplicationContext(), Quiz.class);
+            generateYourQuizTextView.setVisibility(View.GONE);
+            autoCompleteTextViewCategory.setVisibility(View.GONE);
+            autoCompleteTextViewDifficulty.setVisibility(View.GONE);
+            autoCompleteTextViewQuestionsNumber.setVisibility(View.GONE);
+            textInputLayoutDifficulty.setVisibility(View.GONE);
+            textInputLayoutCategory.setVisibility(View.GONE);
+            textInputLayoutAmount.setVisibility(View.GONE);
+            generateQuizWithConfigurationButton.setVisibility(View.GONE);
+            generateRandomQuizButton.setVisibility(View.GONE);
+
+            Intent intent = new Intent(getApplicationContext(), PracticeQuiz.class);
 
             QuizConfiguration quizConfiguration = new QuizConfiguration();
             String category = autoCompleteTextViewCategory.getText().toString();
@@ -116,7 +144,16 @@ public class QuizMenu extends AppCompatActivity {
 
         generateRandomQuizButton = findViewById(R.id.generate_random_quiz_button);
         generateRandomQuizButton.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), Quiz.class);
+            generateYourQuizTextView.setVisibility(View.GONE);
+            autoCompleteTextViewCategory.setVisibility(View.GONE);
+            autoCompleteTextViewDifficulty.setVisibility(View.GONE);
+            autoCompleteTextViewQuestionsNumber.setVisibility(View.GONE);
+            textInputLayoutDifficulty.setVisibility(View.GONE);
+            textInputLayoutCategory.setVisibility(View.GONE);
+            textInputLayoutAmount.setVisibility(View.GONE);
+            generateQuizWithConfigurationButton.setVisibility(View.GONE);
+            generateRandomQuizButton.setVisibility(View.GONE);
+            Intent intent = new Intent(getApplicationContext(), PracticeQuiz.class);
             intent.putExtra("config", new QuizConfiguration(
                     "0", "0", "10"));
             startActivity(intent);
