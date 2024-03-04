@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -51,13 +52,16 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
 
     // Visual variables
     TextView questionsTextView;
+    TextView questionsLeftTextView;
     Button respA, respB, respC, respD;
     Button nextButton;
 
     // Quiz running variables
     int questionIndex = 0;
-    String selectedAnswer = "";
+    String selectedAnswer = "null";
     int score = 0;
+
+    int totalQuestions = 10;
 
     // Loading screen
     DialogObject dialogObject = new DialogObject(DailyQuiz.this);
@@ -66,11 +70,20 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
     Calendar dateAndTimeNow;
     Calendar dateAndTimeAfter24h;
 
+    // Counter
+    TextView countdownTextView;
+    CountDownTimer countDownTimer;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_quiz);
 
+        questionsLeftTextView = findViewById(R.id.questions_left);
+        questionsLeftTextView.append(" " + totalQuestions);
+
+        countdownTextView = findViewById(R.id.countdown);
         questionsTextView = findViewById(R.id.question);
         respA = findViewById(R.id.A_response);
         respB = findViewById(R.id.B_response);
@@ -78,12 +91,14 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
         respD = findViewById(R.id.D_response);
         nextButton = findViewById(R.id.next_button);
 
+        questionsLeftTextView.setVisibility(View.GONE);
+        countdownTextView.setVisibility(View.GONE);
+        questionsTextView.setVisibility(View.GONE);
         respA.setVisibility(View.GONE);
         respB.setVisibility(View.GONE);
         respC.setVisibility(View.GONE);
         respD.setVisibility(View.GONE);
         nextButton.setVisibility(View.GONE);
-        questionsTextView.setVisibility(View.GONE);
 
         checkDailyQuiz();
 
@@ -93,6 +108,21 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
         respD.setOnClickListener(this);
         nextButton.setOnClickListener(this);
 
+        countDownTimer = new CountDownTimer(16000, 1000) {
+            String timeLeft;
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timeLeft = "Time left: " + millisUntilFinished / 1000;
+                countdownTextView.setText(timeLeft);
+            }
+
+            @Override
+            public void onFinish() {
+                timeUp();
+            }
+        };
+
         OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
@@ -100,6 +130,22 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
             }
         };
         getOnBackPressedDispatcher().addCallback(this, onBackPressedCallback);
+    }
+
+    public void timeUp() {
+        // if 15 second pass, the user will be
+        // redirected to the next question with no score modifications
+        if (questionIndex < 10) {
+            respA.setBackgroundColor(Color.WHITE);
+            respB.setBackgroundColor(Color.WHITE);
+            respC.setBackgroundColor(Color.WHITE);
+            respD.setBackgroundColor(Color.WHITE);
+            questionIndex++;
+            setQuestionsLeftTextView();
+            setValuesToQuiz(quiz, questionIndex);
+            selectedAnswer = "null";
+            countDownTimer.start();
+        }
     }
 
     private void checkDailyQuiz() {
@@ -131,14 +177,18 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
                 long compare = dateAndTimeNow.getTimeInMillis() - dateAndTimeAfter24h.getTimeInMillis();
                 if (compare <= 0) {
                     dialogObject.dailyQuizNotAvailableDialog();
-                }
-                else {
+                } else {
+                    dialogObject.startLoadingDialog();
+
+                    questionsLeftTextView.setVisibility(View.VISIBLE);
+                    countdownTextView.setVisibility(View.VISIBLE);
+                    questionsTextView.setVisibility(View.VISIBLE);
                     respA.setVisibility(View.VISIBLE);
                     respB.setVisibility(View.VISIBLE);
                     respC.setVisibility(View.VISIBLE);
                     respD.setVisibility(View.VISIBLE);
                     nextButton.setVisibility(View.VISIBLE);
-                    questionsTextView.setVisibility(View.VISIBLE);
+
                     getQuestions();
                 }
             }
@@ -167,8 +217,10 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
                 }
                 if (!Objects.equals(selectedAnswer, "null")) {
                     questionIndex++;
+                    setQuestionsLeftTextView();
                     setValuesToQuiz(quiz, questionIndex);
                     selectedAnswer = "null";
+                    countDownTimer.start();
                 } else {
                     Toast.makeText(DailyQuiz.this, "You have to select an answer!", Toast.LENGTH_SHORT).show();
                 }
@@ -180,6 +232,11 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
         }
     }
 
+    private void setQuestionsLeftTextView() {
+        String helper = "Questions left: " + --totalQuestions;
+        questionsLeftTextView.setText(helper);
+    }
+
     void getQuestions() {
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -187,7 +244,6 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        dialogObject.startLoadingDialog();
         Request request = retrofit.create(Request.class);
         request.get().enqueue(new Callback<QuizObject>() {
 
@@ -199,14 +255,16 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
                     setValuesToQuiz(quiz, 0);
                 } else {
                     questionsTextView.setText(R.string.questions_were_not_generated);
+                    startActivity(new Intent(getApplicationContext(), DailyQuiz.class));
                 }
                 dialogObject.dismissDialog();
+                countDownTimer.start();
             }
 
             @Override
             public void onFailure(@NonNull Call<QuizObject> call, @NonNull Throwable t) {
                 questionsTextView.setText(R.string.questions_were_not_generated);
-                Intent intent = new Intent(getApplicationContext(), Quiz.class);
+                Intent intent = new Intent(getApplicationContext(), PracticeQuiz.class);
                 startActivity(intent);
             }
         });
@@ -329,7 +387,6 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
                     userFromDB.setDailyTotalScore(userFromDB.getDailyTotalScore() + score);
 
                     mRef.setValue(userFromDB);
-
                     dialogObject.seeDailyQuizResultsDialog(score, userFromDB.getDailyTotalScore());
                 }
 
@@ -338,12 +395,14 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
                     // Error
                 }
             });
+            questionsLeftTextView.setVisibility(View.GONE);
+            countdownTextView.setVisibility(View.GONE);
+            questionsTextView.setVisibility(View.GONE);
             respA.setVisibility(View.GONE);
             respB.setVisibility(View.GONE);
             respC.setVisibility(View.GONE);
             respD.setVisibility(View.GONE);
             nextButton.setVisibility(View.GONE);
-            questionsTextView.setVisibility(View.GONE);
         }
     }
 

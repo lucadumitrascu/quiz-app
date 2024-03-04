@@ -48,5 +48,7 @@
     <string name="later">Later</string>
     <string name="daily_quiz_not_available">Daily quiz not available</string>
     <string name="exit_quizapp">Exit QuizApp?</string>
+    <string name="questions_left">Questions left:</string>
+    <string name="time_left">Time left:</string>
 
 </resources>

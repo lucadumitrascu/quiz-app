@@ -6,7 +6,34 @@
     android:background="@drawable/gradient_background"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".quiz.Quiz">
+    tools:context=".quiz.PracticeQuiz">
+
+
+    <TextView
+        android:id="@+id/questions_left"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/questions_left"
+        android:textAlignment="center"
+        android:textColor="@color/aqua"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/countdown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/time_left"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
 
     <TextView
         android:id="@+id/question"
