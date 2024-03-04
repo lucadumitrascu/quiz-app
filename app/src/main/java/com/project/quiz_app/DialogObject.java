@@ -289,12 +289,21 @@ public class DialogObject {
         Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
 
-        Button okButton = view.findViewById(R.id.ok_quiz_results);
-        okButton.setOnClickListener(v -> {
+        Button startDailyQuizButton = view.findViewById(R.id.start_daily_quiz_button);
+        startDailyQuizButton.setOnClickListener(v -> {
             dismissDialog();
             future.complete(true);
         });
 
+        Button tryItLaterButton = view.findViewById(R.id.try_it_later_button);
+        tryItLaterButton.setOnClickListener(v -> {
+            dismissDialog();
+            Intent intent = new Intent(activity, MainActivity.class);
+            ActivityOptions options = ActivityOptions.makeCustomAnimation(activity,
+                    R.anim.slide_in_left, android.R.anim.slide_out_right);
+            activity.startActivity(intent, options.toBundle());
+            activity.finish();
+        });
         return future;
     }
     public void exitAppDialog() {

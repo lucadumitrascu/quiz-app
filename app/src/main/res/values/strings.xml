@@ -57,5 +57,7 @@
     <string name="time_left_text">Time left:</string>
     <string name="time_left_number">15</string>
     <string name="available_date">Available date:</string>
+    <string name="start_daily_quiz">Start Daily Quiz</string>
+    <string name="try_it_later">Try it later</string>
 
 </resources>
