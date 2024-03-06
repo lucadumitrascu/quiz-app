@@ -30,12 +30,12 @@
         android:gravity="start"
         android:text="@string/loading_name"
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:textStyle="bold" />
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/daily_quiz"
+        android:id="@+id/daily_quiz_button"
         android:layout_width="300sp"
         android:layout_height="wrap_content"
         android:layout_margin="6sp"
@@ -46,7 +46,7 @@
         android:textSize="30sp" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/practice_quiz_generate"
+        android:id="@+id/practice_quiz_generate_button"
         android:layout_width="300sp"
         android:layout_height="wrap_content"
         android:layout_margin="6sp"
@@ -57,7 +57,7 @@
         android:textSize="30sp" />
 
     <androidx.appcompat.widget.AppCompatButton
-
+        android:id="@+id/leaderboard_button"
         android:layout_width="300sp"
         android:layout_height="wrap_content"
         android:layout_margin="6sp"
@@ -80,7 +80,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/logout"
+        android:id="@+id/logout_button"
         android:layout_width="300sp"
         android:layout_height="wrap_content"
         android:layout_marginTop="6sp"

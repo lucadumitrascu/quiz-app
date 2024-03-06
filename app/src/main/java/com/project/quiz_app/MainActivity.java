@@ -23,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.project.quiz_app.authentication.Login;
 import com.project.quiz_app.authentication.SetName;
 import com.project.quiz_app.authentication.User;
+import com.project.quiz_app.leaderboard.Leaderboard;
 import com.project.quiz_app.quiz.DailyQuiz;
 import com.project.quiz_app.quiz.QuizMenu;
 
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
     TextView displayName;
-    Button logoutButton, practiceQuizButton, dailyQuizButton;
+    Button logoutButton, practiceQuizButton, dailyQuizButton, leaderboardButton;
     FirebaseUser user;
 
     DialogObject dialogObject = new DialogObject(MainActivity.this);
@@ -42,9 +43,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        logoutButton = findViewById(R.id.logout);
-        practiceQuizButton = findViewById(R.id.practice_quiz_generate);
-        dailyQuizButton = findViewById(R.id.daily_quiz);
+        logoutButton = findViewById(R.id.logout_button);
+        practiceQuizButton = findViewById(R.id.practice_quiz_generate_button);
+        dailyQuizButton = findViewById(R.id.daily_quiz_button);
+        leaderboardButton = findViewById(R.id.leaderboard_button);
 
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
@@ -88,15 +90,21 @@ public class MainActivity extends AppCompatActivity {
             finish();
         });
 
-        logoutButton.setOnClickListener(v -> {
-            FirebaseAuth.getInstance().signOut();
-            Intent intent = new Intent(getApplicationContext(), Login.class);
+        practiceQuizButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), QuizMenu.class);
             startActivity(intent);
             finish();
         });
 
-        practiceQuizButton.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), QuizMenu.class);
+        leaderboardButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), Leaderboard.class);
+            startActivity(intent);
+            finish();
+        });
+
+        logoutButton.setOnClickListener(v -> {
+            FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(getApplicationContext(), Login.class);
             startActivity(intent);
             finish();
         });
