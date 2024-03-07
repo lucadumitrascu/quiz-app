@@ -68,7 +68,7 @@
         android:textSize="30sp" />
 
     <androidx.appcompat.widget.AppCompatButton
-
+        android:id="@+id/change_name_button"
         android:layout_width="300sp"
         android:layout_height="wrap_content"
         android:layout_margin="6sp"

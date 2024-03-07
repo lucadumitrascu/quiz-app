@@ -21,7 +21,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.project.quiz_app.authentication.Login;
-import com.project.quiz_app.authentication.SetName;
 import com.project.quiz_app.authentication.User;
 import com.project.quiz_app.leaderboard.Leaderboard;
 import com.project.quiz_app.quiz.DailyQuiz;
@@ -33,9 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
     TextView displayName;
-    Button logoutButton, practiceQuizButton, dailyQuizButton, leaderboardButton;
+    Button logoutButton, practiceQuizButton, dailyQuizButton, leaderboardButton, changeNameButton;
     FirebaseUser user;
-
     DialogObject dialogObject = new DialogObject(MainActivity.this);
 
     @Override
@@ -43,10 +41,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        logoutButton = findViewById(R.id.logout_button);
-        practiceQuizButton = findViewById(R.id.practice_quiz_generate_button);
         dailyQuizButton = findViewById(R.id.daily_quiz_button);
+        practiceQuizButton = findViewById(R.id.practice_quiz_generate_button);
         leaderboardButton = findViewById(R.id.leaderboard_button);
+        changeNameButton = findViewById(R.id.change_name_button);
+        logoutButton = findViewById(R.id.logout_button);
+
 
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
@@ -60,12 +60,13 @@ public class MainActivity extends AppCompatActivity {
             query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                     if (dataSnapshot.exists()) {
                         DataSnapshot snapshot = dataSnapshot.getChildren().iterator().next();
                         User userFromDB = snapshot.getValue(User.class);
                         assert userFromDB != null;
                         if (Objects.equals(userFromDB.getName(), "null")) {
-                            Intent intent = new Intent(getApplicationContext(), SetName.class);
+                            Intent intent = new Intent(getApplicationContext(), SetOrChangeName.class);
                             startActivity(intent);
                             finish();
                         } else {
@@ -98,6 +99,12 @@ public class MainActivity extends AppCompatActivity {
 
         leaderboardButton.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), Leaderboard.class);
+            startActivity(intent);
+            finish();
+        });
+
+        changeNameButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), SetOrChangeName.class);
             startActivity(intent);
             finish();
         });
