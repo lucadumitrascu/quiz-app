@@ -99,10 +99,10 @@ public class Leaderboard extends AppCompatActivity {
                 // Sorting by place
                 userList.sort(Comparator.comparingInt(User::getDailyTotalScore).reversed());
 
-                User extraUser = new User("-", "-", "-",
-                        0, 0, 0, 0, 0);
-
                 if (!(userList.size() % 10 == 0)) {
+                    User extraUser = new User("-", "-", "-",
+                            0, 0, 0, 0, 0);
+
                     for (int i = 0; i < (userList.size() % 10); i++) {
                         userList.add(extraUser);
                     }

@@ -7,9 +7,10 @@
     android:background="@drawable/gradient_background"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".authentication.SetName">
+    tools:context=".SetOrChangeName">
 
     <TextView
+        android:id="@+id/message_set_or_change_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10sp"
@@ -21,6 +22,7 @@
         android:textStyle="bold" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/name_input_layout"
         android:layout_width="350sp"
         android:layout_height="wrap_content"
         android:textColorHint="@color/white"
@@ -31,21 +33,40 @@
             android:id="@+id/name_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColorHint="@color/white"
             android:maxLength="15"
             android:hint="@string/my_name_is"
             android:textColor="@color/input_text" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/set_name_button"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="48sp"
-        android:layout_marginTop="10sp"
-        android:background="@drawable/button_login_register"
-        android:backgroundTint="@color/aqua"
-        android:text="@string/set_name"
-        android:textAllCaps="false"
-        android:textColor="@color/white" />
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/cancel_set_or_change_button"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5sp"
+            android:textStyle="bold"
+            android:backgroundTint="@color/white"
+            android:text="@string/cancel_text"
+            android:textColor="@color/green_for_buttons" />
+
+        <Button
+            android:id="@+id/set_or_change_name_button"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5sp"
+            android:backgroundTint="#5AA8AF"
+            android:text="@string/set_name"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
 
 </LinearLayout>
