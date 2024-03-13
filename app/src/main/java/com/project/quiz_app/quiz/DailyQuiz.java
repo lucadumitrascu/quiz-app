@@ -150,7 +150,7 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
 
 
     // CountDownTimer functions:
-    public void createCountDownTimer(long millisUntilFinished) {
+    private void createCountDownTimer(long millisUntilFinished) {
         this.countDownTimer = new CountDownTimer(millisUntilFinished, 1000) {
             String timeLeft;
 
@@ -174,7 +174,7 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
         };
     }
 
-    public void timeUp() {
+    private void timeUp() {
         // if 15 second pass, the user will be
         // redirected to the next question with no score modifications
         if (questionIndex < 10) {
@@ -291,7 +291,7 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
         questionsLeftTextView.setText(helper);
     }
 
-    void getQuestions() {
+    private void getQuestions() {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://opentdb.com")
@@ -324,11 +324,11 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
         });
     }
 
-    void setGlobalVariableQuiz(QuizObject quiz) {
+    private void setGlobalVariableQuiz(QuizObject quiz) {
         this.quiz = quiz;
     }
 
-    void setValuesToQuiz(QuizObject quiz, int index) {
+    private void setValuesToQuiz(QuizObject quiz, int index) {
         if (index < 10) {
 
             String question = quiz.results.get(index).getQuestion();
@@ -463,7 +463,7 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
     }
 
     // Generate random order to questions
-    int[] getRandomIndexVector() {
+    private int[] getRandomIndexVector() {
         int[] indexVector = new int[]{5, 5, 5};
         Random rand = new Random();
         int randomValue;
@@ -479,7 +479,7 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
         return indexVector;
     }
 
-    boolean checkDuplicate(int index, int value, int[] vector) {
+    private boolean checkDuplicate(int index, int value, int[] vector) {
         for (int i = index - 1; i >= 0; i--) {
             if (value == vector[i]) {
                 return false;

@@ -328,6 +328,27 @@ public class DialogObject {
         noButton.setOnClickListener(v -> dismissDialog());
     }
 
+
+    public void noInternetConnectionDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+
+        LayoutInflater inflater = activity.getLayoutInflater();
+        View view = inflater.inflate(R.layout.dialog_no_internet_connection, null);
+        builder.setView(view);
+        builder.setCancelable(false);
+
+        this.dialog = builder.create();
+        Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+
+        Button okButton = view.findViewById(R.id.ok_no_internet_button);
+
+        okButton.setOnClickListener(v -> {
+            dismissDialog();
+            activity.finish();
+        });
+    }
+
     public void dismissDialog() {
         dialog.dismiss();
     }

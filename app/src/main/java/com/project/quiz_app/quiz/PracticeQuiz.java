@@ -143,7 +143,7 @@ public class PracticeQuiz extends AppCompatActivity implements View.OnClickListe
         questionsLeftTextView.setText(helper);
     }
 
-    void getQuestions() {
+    private void getQuestions() {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://opentdb.com")
@@ -185,11 +185,11 @@ public class PracticeQuiz extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    void setGlobalVariableQuiz(QuizObject quiz) {
+    private void setGlobalVariableQuiz(QuizObject quiz) {
         this.quiz = quiz;
     }
 
-    void setValuesToQuiz(QuizObject quiz, int index) {
+    private void setValuesToQuiz(QuizObject quiz, int index) {
         if (index < Integer.parseInt(quizConfiguration.getNumberOfQuestions())) {
 
             String question = quiz.results.get(index).getQuestion();
@@ -316,7 +316,7 @@ public class PracticeQuiz extends AppCompatActivity implements View.OnClickListe
     }
 
     // Generate random order to questions
-    int[] getRandomIndexVector() {
+    private int[] getRandomIndexVector() {
         int[] indexVector = new int[]{5, 5, 5};
         Random rand = new Random();
         int randomValue;
@@ -332,7 +332,7 @@ public class PracticeQuiz extends AppCompatActivity implements View.OnClickListe
         return indexVector;
     }
 
-    boolean checkDuplicate(int index, int value, int[] vector) {
+    private boolean checkDuplicate(int index, int value, int[] vector) {
         for (int i = index - 1; i >= 0; i--) {
             if (value == vector[i]) {
                 return false;

@@ -1,5 +1,6 @@
 package com.project.quiz_app;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +9,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -66,6 +68,9 @@ public class SetOrChangeName extends AppCompatActivity {
                     messageSetOrChangeName.setGravity(Gravity.CENTER);
                     nameTextInputLayout.setHint("Write your new name...");
                 }
+                else {
+                    cancelButton.setVisibility(View.GONE);
+                }
             }
 
             @Override
@@ -102,10 +107,22 @@ public class SetOrChangeName extends AppCompatActivity {
             startActivity(intent, options.toBundle());
             finish();
         });
+
+        OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                ActivityOptions options = ActivityOptions.makeCustomAnimation(getApplicationContext(),
+                        R.anim.slide_in_left, android.R.anim.slide_out_right);
+                startActivity(intent, options.toBundle());
+                finish();
+            }
+        };
+        getOnBackPressedDispatcher().addCallback(this, onBackPressedCallback);
     }
 
 
-    public void getAllUsers() {
+    private void getAllUsers() {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -122,7 +139,7 @@ public class SetOrChangeName extends AppCompatActivity {
         });
     }
 
-    public void checkName() {
+    private void checkName() {
         for (int i = 0; i < users.size(); i++) {
             String nameFromUsers = users.get(i).getName();
             if (nameFromUsers.equals(this.name)) {
