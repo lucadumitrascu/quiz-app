@@ -29,7 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="5sp"
         android:textColorHint="@color/white"
-        app:boxStrokeColor="@color/text_input_layout_quiz_options">
+        app:boxStrokeColor="@color/text_input_layout_quiz_options"
+        app:hintTextColor="@color/white">
 
         <AutoCompleteTextView
             android:id="@+id/auto_complete_textview_difficulty"
@@ -50,7 +51,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="5sp"
         android:textColorHint="@color/white"
-        app:boxStrokeColor="@color/text_input_layout_quiz_options">
+        app:boxStrokeColor="@color/text_input_layout_quiz_options"
+        app:hintTextColor="@color/white">
 
         <AutoCompleteTextView
             android:id="@+id/auto_complete_textview_category"
@@ -72,7 +74,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="5sp"
         android:textColorHint="@color/white"
-        app:boxStrokeColor="@color/text_input_layout_quiz_options">
+        app:boxStrokeColor="@color/text_input_layout_quiz_options"
+        app:hintTextColor="@color/white">
 
         <AutoCompleteTextView
             android:id="@+id/auto_complete_textview_number_of_questions"
@@ -99,9 +102,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
             android:backgroundTint="@color/white"
-            android:textStyle="bold"
             android:text="@string/generate_random_quiz"
-            android:textColor="@color/green_for_buttons" />
+            android:textColor="@color/green_for_buttons"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/generate_quiz_button"

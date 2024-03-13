@@ -6,9 +6,12 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -31,7 +34,7 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
-    TextView displayName;
+    TextView displayName, title;
     Button logoutButton, practiceQuizButton, dailyQuizButton, leaderboardButton, changeNameButton;
     FirebaseUser user;
     DialogObject dialogObject = new DialogObject(MainActivity.this);
@@ -46,7 +49,20 @@ public class MainActivity extends AppCompatActivity {
         leaderboardButton = findViewById(R.id.leaderboard_button);
         changeNameButton = findViewById(R.id.change_name_button);
         logoutButton = findViewById(R.id.logout_button);
+        displayName = findViewById(R.id.display_name);
+        title = findViewById(R.id.title);
 
+        if(!isInternetConnection()) {
+            dailyQuizButton.setVisibility(View.GONE);
+            practiceQuizButton.setVisibility(View.GONE);
+            leaderboardButton.setVisibility(View.GONE);
+            changeNameButton.setVisibility(View.GONE);
+            logoutButton.setVisibility(View.GONE);
+            displayName.setVisibility(View.GONE);
+            title.setVisibility(View.GONE);
+
+            dialogObject.noInternetConnectionDialog();
+        }
 
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
@@ -70,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(intent);
                             finish();
                         } else {
-                            displayName = findViewById(R.id.display_name);
                             String name = "Hello, ";
                             name += userFromDB.getName();
                             displayName.setText(name);
@@ -123,5 +138,10 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         getOnBackPressedDispatcher().addCallback(this, onBackPressedCallback);
+    }
+
+    public boolean isInternetConnection() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnectedOrConnecting();
     }
 }

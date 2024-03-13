@@ -81,7 +81,7 @@ public class QuizMenu extends AppCompatActivity {
         textInputLayoutAmount = findViewById(R.id.text_input_layout_amount);
 
         autoCompleteTextViewDifficulty = findViewById(R.id.auto_complete_textview_difficulty);
-        adapterItems = new ArrayAdapter<>(this, R.layout.list_item, difficultyItem);
+        adapterItems = new ArrayAdapter<>(this, R.layout.list_item_quiz_configuration, difficultyItem);
         autoCompleteTextViewDifficulty.setAdapter(adapterItems);
         autoCompleteTextViewDifficulty.setOnItemClickListener((adapterView, view, position, id) -> {
             String item = adapterView.getItemAtPosition(position).toString();
@@ -90,7 +90,7 @@ public class QuizMenu extends AppCompatActivity {
 
 
         autoCompleteTextViewCategory = findViewById(R.id.auto_complete_textview_category);
-        adapterItems = new ArrayAdapter<>(this, R.layout.list_item, categoryItem);
+        adapterItems = new ArrayAdapter<>(this, R.layout.list_item_quiz_configuration, categoryItem);
         autoCompleteTextViewCategory.setAdapter(adapterItems);
         autoCompleteTextViewCategory.setOnItemClickListener((adapterView, view, position, id) -> {
             String item = adapterView.getItemAtPosition(position).toString();
@@ -98,7 +98,7 @@ public class QuizMenu extends AppCompatActivity {
         });
 
         autoCompleteTextViewQuestionsNumber = findViewById(R.id.auto_complete_textview_number_of_questions);
-        adapterItems = new ArrayAdapter<>(this, R.layout.list_item, numberItem);
+        adapterItems = new ArrayAdapter<>(this, R.layout.list_item_quiz_configuration, numberItem);
         autoCompleteTextViewQuestionsNumber.setAdapter(adapterItems);
         autoCompleteTextViewQuestionsNumber.setOnItemClickListener((adapterView, view, position, id) -> {
             String item = adapterView.getItemAtPosition(position).toString();
@@ -226,7 +226,7 @@ public class QuizMenu extends AppCompatActivity {
         return difficulty;
     }
 
-    public String getCategoryNumber(String category) {
+    private String getCategoryNumber(String category) {
         switch (category) {
             case "General Knowledge":
                 return "9";
