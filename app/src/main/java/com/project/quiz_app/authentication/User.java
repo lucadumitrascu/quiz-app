@@ -3,38 +3,38 @@ package com.project.quiz_app.authentication;
 public class User {
 
     String name, email, dailyQuizAvailableDate;
-    int placeInLeaderboard, totalScore, lastQuizScore, dailyTotalScore, dailyLastQuizScore;
+    int placeInLeaderboard, totalPracticeScore, lastPracticeQuizScore, totalDailyScore, lastDailyQuizScore;
 
 
-    public User(String name, String email, String dailyQuizAvailableDate, int place, int totalScore, int lastQuizScore, int dailyTotalScore, int dailyLastQuizScore) {
+    public User(String name, String email, String dailyQuizAvailableDate, int place, int totalPracticeScore, int lastQuizScore, int dailyTotalScore, int dailyLastQuizScore) {
         this.name = name;
         this.email = email;
         this.dailyQuizAvailableDate = dailyQuizAvailableDate;
         this.placeInLeaderboard = place;
-        this.totalScore = totalScore;
-        this.lastQuizScore = lastQuizScore;
-        this.dailyTotalScore = dailyTotalScore;
-        this.dailyLastQuizScore = dailyLastQuizScore;
+        this.totalPracticeScore = totalPracticeScore;
+        this.lastPracticeQuizScore = lastQuizScore;
+        this.totalDailyScore = dailyTotalScore;
+        this.lastDailyQuizScore = dailyLastQuizScore;
     }
 
     public User() {
     }
 
 
-    public int getDailyTotalScore() {
-        return dailyTotalScore;
+    public int getTotalDailyScore() {
+        return totalDailyScore;
     }
 
-    public void setDailyTotalScore(int dailyTotalScore) {
-        this.dailyTotalScore = dailyTotalScore;
+    public void setTotalDailyScore(int totalDailyScore) {
+        this.totalDailyScore = totalDailyScore;
     }
 
-    public int getDailyLastQuizScore() {
-        return dailyLastQuizScore;
+    public int getLastDailyQuizScore() {
+        return lastDailyQuizScore;
     }
 
-    public void setDailyLastQuizScore(int dailyLastQuizScore) {
-        this.dailyLastQuizScore = dailyLastQuizScore;
+    public void setLastDailyQuizScore(int lastDailyQuizScore) {
+        this.lastDailyQuizScore = lastDailyQuizScore;
     }
 
     public String getDailyQuizAvailableDate() {
@@ -69,19 +69,19 @@ public class User {
         this.placeInLeaderboard = placeInLeaderboard;
     }
 
-    public int getTotalScore() {
-        return totalScore;
+    public int getTotalPracticeScore() {
+        return totalPracticeScore;
     }
 
-    public void setTotalScore(int totalScore) {
-        this.totalScore = totalScore;
+    public void setTotalPracticeScore(int totalPracticeScore) {
+        this.totalPracticeScore = totalPracticeScore;
     }
 
-    public int getLastQuizScore() {
-        return lastQuizScore;
+    public int getLastPracticeQuizScore() {
+        return lastPracticeQuizScore;
     }
 
-    public void setLastQuizScore(int lastQuizScore) {
-        this.lastQuizScore = lastQuizScore;
+    public void setLastPracticeQuizScore(int lastPracticeQuizScore) {
+        this.lastPracticeQuizScore = lastPracticeQuizScore;
     }
 }

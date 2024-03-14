@@ -41,6 +41,7 @@
     <string name="c">C</string>
     <string name="d">D</string>
     <string name="next_question">Next question!</string>
+    <string name="total_practice_score">Total practice score:</string>
     <string name="score">Score:</string>
     <string name="difficulty">Difficulty</string>
     <string name="choose_difficulty">Choose difficulty</string>
@@ -77,6 +78,7 @@
     <string name="previous_leaderboard_button">Previous</string>
     <string name="leaderboard_next_button">Next</string>
     <string name="no_internet_connection">No internet connection</string>
+
 
 
 </resources>

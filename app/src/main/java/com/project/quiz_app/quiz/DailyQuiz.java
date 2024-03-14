@@ -437,12 +437,12 @@ public class DailyQuiz extends AppCompatActivity implements View.OnClickListener
 
                     assert userFromDB != null;
                     userFromDB.setDailyQuizAvailableDate(dateAndTime);
-                    userFromDB.setDailyLastQuizScore(score);
-                    userFromDB.setDailyTotalScore(userFromDB.getDailyTotalScore() + score);
+                    userFromDB.setLastDailyQuizScore(score);
+                    userFromDB.setTotalDailyScore(userFromDB.getTotalDailyScore() + score);
 
                     mRef.setValue(userFromDB);
                     countDownTimer.onFinish();
-                    dialogObject.seeDailyQuizResultsDialog(score, userFromDB.getDailyTotalScore());
+                    dialogObject.seeDailyQuizResultsDialog(score, userFromDB.getTotalDailyScore());
                 }
 
                 @Override

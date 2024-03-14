@@ -146,8 +146,8 @@ public class DialogObject {
 
                     assert userFromDB != null;
                     userFromDB.setDailyQuizAvailableDate(dateAndTime);
-                    userFromDB.setDailyLastQuizScore(0);
-                    userFromDB.setDailyTotalScore(userFromDB.getDailyTotalScore());
+                    userFromDB.setLastDailyQuizScore(0);
+                    userFromDB.setTotalDailyScore(userFromDB.getTotalDailyScore());
 
                     mRef.setValue(userFromDB);
                 }

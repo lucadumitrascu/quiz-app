@@ -285,8 +285,8 @@ public class PracticeQuiz extends AppCompatActivity implements View.OnClickListe
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             assert user != null;
 
-            DatabaseReference totalScoreRef = database.getReference().child("Users").child(user.getUid()).child("totalScore");
-            DatabaseReference lastScoreRef = database.getReference().child("Users").child(user.getUid()).child("lastQuizScore");
+            DatabaseReference totalScoreRef = database.getReference().child("Users").child(user.getUid()).child("totalPracticeScore");
+            DatabaseReference lastScoreRef = database.getReference().child("Users").child(user.getUid()).child("lastPracticeQuizScore");
             totalScoreRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

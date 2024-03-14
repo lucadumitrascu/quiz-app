@@ -83,8 +83,6 @@ public class Leaderboard extends AppCompatActivity {
             }
         };
         getOnBackPressedDispatcher().addCallback(this, onBackPressedCallback);
-
-
     }
 
     private void setValuesToLeaderboard() {
@@ -97,11 +95,11 @@ public class Leaderboard extends AppCompatActivity {
                     userList.add(ds.getValue(User.class));
                 }
                 // Sorting by place
-                userList.sort(Comparator.comparingInt(User::getDailyTotalScore).reversed());
+                userList.sort(Comparator.comparingInt(User::getTotalDailyScore).reversed());
 
                 if (!(userList.size() % 10 == 0)) {
                     User extraUser = new User("-", "-", "-",
-                            0, 0, 0, 0, 0);
+                             0,0, 0, 0, 0);
 
                     for (int i = 0; i < (userList.size() % 10); i++) {
                         userList.add(extraUser);
@@ -184,7 +182,7 @@ public class Leaderboard extends AppCompatActivity {
                 row.addView(nameView);
 
                 TextView scoreView = new TextView(Leaderboard.this);
-                scoreView.setText(String.valueOf(user.getDailyTotalScore()));
+                scoreView.setText(String.valueOf(user.getTotalDailyScore()));
                 scoreView.setGravity(Gravity.CENTER);
                 scoreView.setTextColor(Color.rgb(212, 175, 55));
                 scoreView.setTextSize(20);
@@ -207,7 +205,7 @@ public class Leaderboard extends AppCompatActivity {
                 row.addView(nameView);
 
                 TextView scoreView = new TextView(Leaderboard.this);
-                scoreView.setText(String.valueOf(user.getDailyTotalScore()));
+                scoreView.setText(String.valueOf(user.getTotalDailyScore()));
                 scoreView.setGravity(Gravity.CENTER);
                 scoreView.setTextColor(Color.rgb(192, 192, 192));
                 scoreView.setTextSize(20);
@@ -230,7 +228,7 @@ public class Leaderboard extends AppCompatActivity {
                 row.addView(nameView);
 
                 TextView scoreView = new TextView(Leaderboard.this);
-                scoreView.setText(String.valueOf(user.getDailyTotalScore()));
+                scoreView.setText(String.valueOf(user.getTotalDailyScore()));
                 scoreView.setGravity(Gravity.CENTER);
                 scoreView.setTextColor(Color.rgb(205, 127, 50));
                 scoreView.setTextSize(20);
@@ -254,7 +252,7 @@ public class Leaderboard extends AppCompatActivity {
                 row.addView(nameView);
 
                 TextView scoreView = new TextView(Leaderboard.this);
-                scoreView.setText(String.valueOf(user.getDailyTotalScore()));
+                scoreView.setText(String.valueOf(user.getTotalDailyScore()));
                 scoreView.setGravity(Gravity.CENTER);
                 scoreView.setTextColor(Color.GREEN);
                 scoreView.setTextSize(21);
@@ -277,7 +275,7 @@ public class Leaderboard extends AppCompatActivity {
                 row.addView(nameView);
 
                 TextView scoreView = new TextView(Leaderboard.this);
-                scoreView.setText(String.valueOf(user.getDailyTotalScore()));
+                scoreView.setText(String.valueOf(user.getTotalDailyScore()));
                 scoreView.setGravity(Gravity.CENTER);
                 scoreView.setTextColor(Color.WHITE);
                 scoreView.setTextSize(20);

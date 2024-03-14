@@ -85,11 +85,10 @@ public class Register extends AppCompatActivity {
                             User newUser = new User();
                             newUser.setEmail(userEmail);
                             newUser.setName("null");
-                            newUser.setTotalScore(0);
-                            newUser.setLastQuizScore(0);
-                            newUser.setPlaceInLeaderboard(0);
-                            newUser.setDailyLastQuizScore(0);
-                            newUser.setDailyTotalScore(0);
+                            newUser.setTotalPracticeScore(0);
+                            newUser.setLastPracticeQuizScore(0);
+                            newUser.setLastDailyQuizScore(0);
+                            newUser.setTotalDailyScore(0);
 
                             Calendar dateTimeNow = Calendar.getInstance();
                             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
@@ -109,7 +108,6 @@ public class Register extends AppCompatActivity {
                         } else {
                             Toast.makeText(Register.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-
                         }
                     });
         });
